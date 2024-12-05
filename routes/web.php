@@ -18,3 +18,7 @@ Route::get('/homepage', function () {
     return view('homepage');
 });
 
+Route::get('/destinasi', function () {
+    return view('destinasi');
+});
+
