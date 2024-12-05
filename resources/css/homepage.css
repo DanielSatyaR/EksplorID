@@ -16,16 +16,15 @@ body {
 
 /* Navbar Styles */
 .navbar {
+    width: 100%;
+    background-color: #fff;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    background-color: white;
-    color: #fff;
-    padding: 10px 20px;
+    padding: 20px 40px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
     z-index: 1000;
 }
 
@@ -50,11 +49,13 @@ body {
 
 .navbar nav ul li {
     font-size: 16px;
+    padding-right: 100%;
 }
 
 .navbar nav ul li a {
     text-decoration: none;
     color: black;
+    
 }
 
 .navbar .auth-buttons {
@@ -169,6 +170,7 @@ body {
 }
 
 
+
 .card-container {
     display: flex;
     gap: 20px;
@@ -206,3 +208,96 @@ body {
     font-size: 13px;
     color: rgb(92, 91, 91);
 }
+
+
+/* ----------------------------------------FOOTER--------------------------------- */
+
+/* General Footer Styles */
+.footer {
+    background-color: #181818;
+    color: #fff;
+    padding: 40px 20px;
+  }
+  
+  .footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  
+  .footer-section {
+    flex: 1;
+    min-width: 200px;
+    margin: 10px;
+  }
+  
+  .footer-logo {
+    width: 150px; /* Sesuaikan ukuran logo */
+    margin-bottom: 10px;
+  }
+  
+  .footer-section h3 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  
+  .footer-section p {
+    margin-bottom: 10px;
+  }
+
+  .payment-logos img {
+    width: 80px;
+    height: 50px;
+    display: flex;
+    border-radius: 15px;
+  }
+  
+  .footer-section ul {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .footer-section ul li {
+    margin-bottom: 8px;
+    font-size: 14px;
+    text-align: center;
+  }
+  
+  .app-logos {
+    display: flex;
+    flex-direction: column; /* Tumpuk gambar secara vertikal */
+    align-items: center; /* Pusatkan gambar secara horizontal */
+    gap: 10px; /* Jarak antar gambar */
+  }
+  
+  .app-logos img {
+    width: 150px; /* Sesuaikan ukuran gambar */
+    display: block;
+  }
+  
+  
+  .footer-section img {
+  display: inline-block;
+
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .footer-container {
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    .footer-section {
+      margin: 20px 0;
+    }
+  
+    .payment-logos img,
+    .app-logos img {
+      margin-right: 5px;
+    }
+  }
+  
