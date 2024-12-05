@@ -22,6 +22,19 @@
         </div>
     </header>
 
+    <div class="banner">
+        <!-- Ganti "your-image.jpg" dengan jalur gambar latar Anda -->
+        <img src="img/holidaybanner.jpg" alt="Background Image">
+        <div class="banner-content">
+            <h1>EKSPLORE IMPIANMU</h1>
+            <p>Buatlah pengalaman serumu</p>
+            <div class="search-box">
+                <input type="text" placeholder="Jakarta">
+                <button>Cari</button>
+            </div>
+        </div>
+    </div>
+
 <div class="konten">
     <div class="bg-white">
         <div class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
@@ -63,17 +76,5 @@
         </div>
     </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
 </body>
 </html>

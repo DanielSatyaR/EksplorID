@@ -16,7 +16,7 @@
         </nav>
         <div class="auth-buttons">
             <a href="/login" class="sign-in">Sign in</a>
-            <a href="/create" class="create-account">Create Account</a>
+            <a href="/createacc" class="create-account">Create Account</a>
         </div>
     </header>
     <div class="container">
