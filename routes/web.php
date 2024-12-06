@@ -22,3 +22,7 @@ Route::get('/destinasi', function () {
     return view('destinasi');
 });
 
+Route::get('/bandung', function () {
+    return view('bandung');
+});
+
