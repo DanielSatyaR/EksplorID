@@ -45,3 +45,7 @@ Route::get('/malang', function () {
 Route::get('/semarang', function () {
     return view('semarang');
 });
+
+Route::get('/keranjang', function () {
+    return view('keranjang');
+});
