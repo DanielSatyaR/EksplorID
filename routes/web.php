@@ -26,3 +26,7 @@ Route::get('/bandung', function () {
     return view('bandung');
 });
 
+Route::get('/jakarta', function () {
+    return view('jakarta');
+});
+
