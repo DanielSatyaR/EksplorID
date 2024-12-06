@@ -34,4 +34,8 @@ Route::get('/bali', function () {
     return view('bali');
 });
 
+Route::get('/yogya', function () {
+    return view('yogya');
+});
+
 
