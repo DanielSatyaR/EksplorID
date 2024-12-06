@@ -30,3 +30,8 @@ Route::get('/jakarta', function () {
     return view('jakarta');
 });
 
+Route::get('/bali', function () {
+    return view('bali');
+});
+
+
