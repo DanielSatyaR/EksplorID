@@ -42,4 +42,6 @@ Route::get('/malang', function () {
     return view('malang');
 });
 
-
+Route::get('/semarang', function () {
+    return view('semarang');
+});
