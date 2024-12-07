@@ -38,4 +38,8 @@ Route::get('/yogya', function () {
     return view('yogya');
 });
 
+Route::get('/malang', function () {
+    return view('malang');
+});
+
 
