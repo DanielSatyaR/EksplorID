@@ -49,3 +49,7 @@ Route::get('/semarang', function () {
 Route::get('/keranjang', function () {
     return view('keranjang');
 });
+
+Route::get('/pesanan', function () {
+    return view('pesanan');
+});
