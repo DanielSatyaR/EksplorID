@@ -11,7 +11,7 @@
         <div class="logo">EksplorID</div>
         <nav>
             <ul>
-                <li><a href="#">Destinasi</a></li>
+                <li><a href="/destinasi">Destinasi</a></li>
             </ul>
         </nav>
         <div class="auth-buttons">
@@ -41,7 +41,7 @@
                 </button>
             </form>
             <footer>
-                <p>Belum punya akun? <a href="#">Daftar akun</a></p>
+                <p>Belum punya akun? <a href="/createacc">Daftar akun</a></p>
             </footer>
         </div>
     </div>

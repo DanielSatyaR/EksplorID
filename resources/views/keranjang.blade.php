@@ -23,7 +23,7 @@
             <a href="/createacc" class="create-account">Create Account</a>
         </div>
         <div class="cart">
-            <a href="#">
+            <a href="/keranjang">
                 <img src="img/cart.png" alt="cart" width="40px">
             </a>
         </div>
@@ -88,9 +88,9 @@
                 <span>1 item</span>
                 <span class="font-bold text-red-500">Rp.27.000</span>
             </p>
-            <button class="w-full bg-blue-500 text-white mt-4 py-2 rounded-lg hover:bg-blue-700">
+            <a href="link-anda.html" class="w-full bg-blue-500 text-white mt-4 py-2 rounded-lg hover:bg-blue-700 text-center block">
                 Lanjut Pembayaran
-            </button>
+            </a>
         </div>
     </div>
 </div>

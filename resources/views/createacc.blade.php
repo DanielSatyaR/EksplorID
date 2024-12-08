@@ -11,7 +11,7 @@
         <div class="logo">EksplorID</div>
         <nav>
             <ul>
-                <li><a href="#">Destinasi</a></li>
+                <li><a href="/destinasi">Destinasi</a></li>
             </ul>
         </nav>
         <div class="auth-buttons">
@@ -50,7 +50,7 @@
                 </button>
             </form>
             <footer>
-                <p>Sudah punya akun? <a href="#">Login</a></p>
+                <p>Sudah punya akun? <a href="/login">Login</a></p>
                 <div class="rules">
                 <p>Dengan membuat akun, kamu menyetujui <a href="#">Kebijakan Privasi</a> dan <a href="#">Syarat & Ketentuan</a> EksplorID</p>
                 </div>

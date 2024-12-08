@@ -25,7 +25,7 @@
             <a href="/createacc" class="create-account">Create Account</a>
         </div>
         <div class="cart">
-            <a href="#">
+            <a href="/keranjang">
                 <img src="img/cart.png" alt="cart" width="40px">
             </a>
         </div>
@@ -178,9 +178,9 @@
           <a href="/keranjang" class="border mr-2 mt-2 text-white py-3 px-4 rounded-lg hover:bg-gray-500">
             <i class="fa-solid fa-cart-shopping" style="color: #000000;"></i>
           </a>
-          <button class="mt-2 bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-700">
+          <a href="/keranjang" class="mt-2 bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-700 text-center inline-block">
             Pilih Tiket
-          </button>
+          </a>
         </div>
       </div>
     </div>

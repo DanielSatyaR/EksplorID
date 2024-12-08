@@ -24,7 +24,7 @@
             <a href="/createacc" class="create-account">Create Account</a>
         </div>
         <div class="cart">
-            <a href="#">
+            <a href="/keranjang">
                 <img src="img/cart.png" alt="cart" width="40px">
             </a>
         </div>
@@ -108,7 +108,7 @@
 <div class="box">
     <div class="bg-white">
             <div class="mx-auto max-w-5xl px-3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-            <a href="#" class="group">
+            <a href="/dagodream" class="group">
                 <img src="img/dagodream.jpg" alt="Tall slender porcelain bottle with natural clay textured body and cork stopper." class="aspect-square w-full rounded-lg bg-gray-200 object-cover group-hover:opacity-75 xl:aspect-[7/8]">
                 <h2 class="mt-1 text-lg font-bold text-gray-900">Dago Dreampark Bandung</h2>
                 <p class="mt-4 text-sm text-gray-700">Lembang, Kab.Bandung Barat</p>
