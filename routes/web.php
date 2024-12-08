@@ -57,3 +57,7 @@ Route::get('/pesanan', function () {
 Route::get('/pembayaran', function () {
     return view('pembayaran');
 });
+
+Route::get('/dagodream', function () {
+    return view('dagodream');
+});
