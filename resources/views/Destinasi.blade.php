@@ -17,12 +17,12 @@
         <div class="logo">EksplorID</div>
         <nav>
             <ul>
-                <li><a href="#">Destinasi</a></li>
+                <li><a href="/destinasi">Destinasi</a></li>
             </ul>
         </nav>
         <div class="auth-buttons">
             <a href="/login" class="sign-in">Log in</a>
-            <a href="/create" class="create-account">Create Account</a>
+            <a href="/createacc" class="create-account">Create Account</a>
         </div>
 </div>
 <!-- ------------------------------------------Konten----------------------------------------------------- -->
@@ -34,14 +34,14 @@
         </div>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
             <!-- Card 1 -->
-            <a href="#" class="block">
+            <a href="/bali" class="block">
             <div class="relative w-full h-48 rounded-xl overflow-hidden shadow-md">
                 <img src="img/Bali.jpeg" alt="Jakarta" class="w-full h-full object-cover">
                 <div class="absolute bottom-2 left-2 bg-opacity-50 text-white text-lg font-semibold px-3 py-1 rounded">Bali</div>
             </div>
         </a>
             <!-- Card 2 -->
-        <a href="#" class="block">
+        <a href="/jakarta" class="block">
             <div class="relative w-full h-48 rounded-xl overflow-hidden shadow-md">
                 <img src="img/Jakarta.jpg" alt="Jakarta" class="w-full h-full object-cover">
                 <div class="absolute bottom-2 left-2 bg-opacity-50 text-white text-lg font-semibold px-3 py-1 rounded">Jakarta</div>
@@ -49,21 +49,21 @@
         </a>
 
             <!-- Card 3 -->
-            <a href="#" class="block">
+            <a href="/yogya" class="block">
             <div class="relative w-full h-48 rounded-xl overflow-hidden shadow-md">
                 <img src="img/Yogya.png" alt="Jakarta" class="w-full h-full object-cover">
                 <div class="absolute bottom-2 left-2 bg-opacity-50 text-white text-lg font-semibold px-3 py-1 rounded">Yogyakarta</div>
             </div>
 
             <!-- Card 4 -->
-            <a href="#" class="block">
+            <a href="/bandung" class="block">
             <div class="relative w-full h-48 rounded-xl overflow-hidden shadow-md">
                 <img src="img/Bandung.jpg" alt="Jakarta" class="w-full h-full object-cover">
                 <div class="absolute bottom-2 left-2 bg-opacity-50 text-white text-lg font-semibold px-3 py-1 rounded">Bandung</div>
             </div>
         </a>
             <!-- Card 5 -->
-        <a href="#" class="block">
+        <a href="/malang" class="block">
             <div class="relative w-full h-48 rounded-xl overflow-hidden shadow-md">
                 <img src="img/malang.png" alt="Jakarta" class="w-full h-full object-cover">
                 <div class="absolute bottom-2 left-2 bg-opacity-50 text-white text-lg font-semibold px-3 py-1 rounded">Malang</div>
@@ -71,7 +71,7 @@
         </a>
 
             <!-- Card 6 -->
-            <a href="#" class="block">
+            <a href="/semarang" class="block">
             <div class="relative w-full h-48 rounded-xl overflow-hidden shadow-md">
                 <img src="img/semarang.jpg" alt="Jakarta" class="w-full h-full object-cover">
                 <div class="absolute bottom-2 left-2 bg-opacity-50 text-white text-lg font-semibold px-3 py-1 rounded">Semarang</div>

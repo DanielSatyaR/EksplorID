@@ -23,7 +23,7 @@
             <a href="/createacc" class="create-account">Create Account</a>
         </div>
         <div class="cart">
-            <a href="#">
+            <a href="/keranjang">
                 <img src="img/cart.png" alt="cart" width="40px">
             </a>
         </div>
