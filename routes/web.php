@@ -53,3 +53,7 @@ Route::get('/keranjang', function () {
 Route::get('/pesanan', function () {
     return view('pesanan');
 });
+
+Route::get('/pembayaran', function () {
+    return view('pembayaran');
+});
