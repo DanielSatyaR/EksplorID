@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -10,9 +11,8 @@ Route::get('/login', function () {
     return view('login');
 });
 
-Route::get('/createacc', function () {
-    return view('createacc');
-});
+Route::get('/createacc', [RegisterController::class, 'index'])->middleware('guest');
+Route::post('/createacc', [RegisterController::class, 'store']);
 
 Route::get('/homepage', function () {
     return view('homepage');
