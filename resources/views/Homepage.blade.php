@@ -1,35 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    @vite('resources/css/app.css')
-    <title>EksplorID</title>
-    <link rel="stylesheet" href="css/homepage.css">
-</head>
+    <!-- HEADER -->
+    <x-header></x-header>
 
 <body>
-    <header class="navbar">
-        <div class="logo">EksplorID</div>
-        <nav>
-            <ul>
-                <li><a href="/destinasi">Destinasi</a></li>
-            </ul>
-        </nav>
-        <div class="auth-buttons">
-            @auth
-            <form action="/logout" method="post">
-                @csrf
-                <button type="submit">Logout</button>
-            </form>
-            @else
-            <a href="/login" class="sign-in">Log in</a>
-            <a href="/createacc" class="create-account">Create Account</a>
-            @endauth
-        </div>
-    </header>
+    
+    <!-- NAVBAR -->
+    <x-navbar> </x-navbar>
+
+
+<!-- BANNER -->
 
     <div class="banner">
         <!-- Ganti "your-image.jpg" dengan jalur gambar latar Anda -->
@@ -117,7 +98,7 @@
                 </a>
             </div>
         </div>
-        <!----------------------------------------------KONTEN 3------------------------------------------------------>
+<!----------------------------------------------KONTEN 3 ------------------------------------------------------>
 
         <div class="Konten2">
             <div class="container mx-auto py-16 px-4 sm:px-6 lg:px-8">
@@ -141,53 +122,9 @@
                 </div>
             </div>
 
-            <!-- ---------------------------------------------FOOTER------------------------------------------------------>
+<!-- ---------------------------------------------FOOTER------------------------------------------------------> 
 
-            <footer class="footer">
-                <div class="footer-container">
-                    <!-- Section 1 -->
-                    <div class="footer-section">
-                        <img src="logo-eksplorid.png" alt="EksplorID Logo" class="footer-logo">
-                        <p>Pembayaran</p>
-                        <div class="payment-logos">
-                            <img src="img/bca.jpg" alt="BCA">
-                            <img src="img/mandiri.jpg" alt="Mandiri">
-                            <img src="img/bni.png" alt="BNI">
-                        </div>
-                    </div>
-
-                    <!-- Section 2 -->
-                    <div class="footer-section">
-                        <h3>Follow Kami di</h3>
-                        <ul>
-                            <li>Facebook</li>
-                            <li>Instagram</li>
-                            <li>Twitter</li>
-                            <li>Tiktok</li>
-                        </ul>
-                    </div>
-
-                    <!-- Section 3 -->
-                    <div class="footer-section">
-                        <h3>Tentang EksplorID</h3>
-                        <ul>
-                            <li>Cara Pesan</li>
-                            <li>Hubungi Kami</li>
-                            <li>Pusat Bantuan</li>
-                            <li>Tentang Kami</li>
-                        </ul>
-                    </div>
-
-                    <!-- Section 4 -->
-                    <div class="footer-section">
-                        <h3>Download App</h3>
-                        <div class="app-logos">
-                            <img src="img/gp.png" alt="Google Play">
-                            <img src="img/app.png" alt="App Store">
-                        </div>
-                    </div>
-                </div>
-            </footer>
+<x-footer></x-footer>
 
 </body>
 
