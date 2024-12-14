@@ -1,10 +1,12 @@
-<div class="min-w-full">
-  <nav class="bg-gray-200" x-data="{ isOpen: false }">
+<div class="min-w-full sticky top-0 z-50 bg-white shadow-md">
+  <nav class="bg-white" x-data="{ isOpen: false }">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 ">
       <div class="flex h-16 items-center justify-between">
         <div class="flex items-center">
           <div class="shrink-0">
+          <a href="/homepage">
             <img class="w-32 h-20" src="img/logo.png" alt="EksplorID">
+          </a> 
           </div>
           <div class="hidden md:block">
             <div class="ml-10 flex items-baseline space-x-4">
@@ -15,6 +17,12 @@
             </div>
           </div>
         </div>
+
+        <a href="/keranjang" class="relative ml-auto">
+                <img src="img/cart.png" alt="Cart Icon" class="w-8 h-8">
+                <span class="absolute top-0 right-0 bg-red-600 text-white text-xs rounded-full w-4 h-3 flex items-center justify-center">3</span>
+            </a>
+
         <div class="hidden md:block">
           <div class="ml-4 flex items-center md:ml-6">
 

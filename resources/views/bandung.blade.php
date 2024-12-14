@@ -1,149 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    @vite('resources/css/app.css')
-    <title>Bandung</title>
-    <link rel="stylesheet" href="css/bandung.css">
-</head>
+<x-header></x-header>
 
 <body>
 
     <!-- ------------------------------------NAVBAR---------------------------------------- -->
 
-    <div class="navbar">
-        <div class="logo">EksplorID</div>
-        <nav>
-            <ul>
-                <li><a href="/destinasi">Destinasi</a></li>
-            </ul>
-        </nav>
-        <div class="auth-buttons">
-            @auth
-            <form action="/logout" method="post">
-                @csrf
-                <button type="submit">Logout</button>
-            </form>
-            @else
-            <a href="/login" class="sign-in">Log in</a>
-            <a href="/createacc" class="create-account">Create Account</a>
-            @endauth
-        </div>
-        <div class="cart">
-            <a href="/keranjang">
-                <img src="img/cart.png" alt="cart" width="40px">
-            </a>
-        </div>
-    </div>
-    </div>
+    <x-Navbar> </x-Navbar>
 
     <!-- ----------------------------------------SEARCH----------------------------------------------- -->
 
-    <!-- Search and Dropdown -->
-    <div class="search-container">
-        <input type="text" class="search-bar" placeholder="Yogyakarta">
-        <select class="destination-dropdown">
-            <option>Pilih Destinasi</option>
-            <option value="jakarta">Jakarta</option>
-            <option value="bali">Bali</option>
-            <option value="malang">Malang</option>
-            <option value="semarang">Semarang</option>
-            <option value="yogyakarta">Yogyakarta</option>
-        </select>
-    </div>
+    <div class="flex items-center justify-center space-x-4 py-5">
+    <!-- Search Bar -->
+    <input type="text" class="w-full md:w-1/3 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Yogyakarta">
+
+    <!-- Destination Dropdown -->
+    <select class="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+        <option>Pilih Destinasi</option>
+        <option value="jakarta">Jakarta</option>
+        <option value="bali">Bali</option>
+        <option value="malang">Malang</option>
+        <option value="semarang">Semarang</option>
+        <option value="yogyakarta">Yogyakarta</option>
+    </select>
+</div>
+
     <!------------------- ------------------BANNER--------------------------------------------------------->
-    <div class="banner">
-        <img src="img/Bbandung.png" alt="Kota Bandung">
-        <div class="banner-konten">
-            <h1> Bandung </h1>
-            <p> Kota Bandung adalah sebuah kota sekaligus menjadi ibu kota provinsi di Provinsi Jawa Barat, Indonesia. Kota Bandung juga merupakan
-                kota terbesar ketiga di Indonesia. </p>
+    <div class="bg-gray-50 min-h-screen">
+    <!-- Banner Image -->
+    <div class="relative w-full h-72">
+        <img src="img/Bbandung.png" alt="Banner Image" class="w-full h-full object-cover">
+        <div class="absolute inset-0 bg-black bg-opacity-40 flex justify-center items-center">
+            <h1 class="text-4xl text-white font-bold">Bandung</h1>
         </div>
     </div>
 
-    <!-- ---------------------------------------filter----------------------------------------------- -->
-    <div class="konten">
-        <div class="filter-box">
+   <!-- Main Content -->
+   <div class="container mx-auto p-6 flex space-x-6">
+        <!-- Filter Section -->
+        <div class="w-1/4 bg-white p-4 shadow-md rounded-lg space-y-6">
             <!-- Sort Section -->
-            <h1>Sort</h1>
-            <div class="radio-group">
-                <label>
-                    <input type="radio" name="sort" value="option1"> Popular
-                </label>
-                <label>
-                    <input type="radio" name="sort" value="option2"> Harga Tertinggi
-                </label>
-                <label>
-                    <input type="radio" name="sort" value="option3"> Rating Tertinggi
-                </label>
+            <div>
+                <h1 class="text-xl font-semibold mb-4">Sort</h1>
+                <div class="space-y-2">
+                    <label class="block">
+                        <input type="radio" name="sort" value="popular" class="mr-2"> Popular
+                    </label>
+                    <label class="block">
+                        <input type="radio" name="sort" value="price-high" class="mr-2"> Harga Tertinggi
+                    </label>
+                    <label class="block">
+                        <input type="radio" name="sort" value="rating-high" class="mr-2"> Rating Tertinggi
+                    </label>
+                </div>
             </div>
 
             <!-- Harga Section -->
-            <h1>Harga</h1>
-            <div class="price-box">
-                <div class="price-input">Rp. 0</div>
-                <div class="price-input">Rp. 500.000</div>
+            <div>
+                <h1 class="text-xl font-semibold mb-4">Harga</h1>
+                <div class="flex justify-between text-gray-700 mb-2">
+                    <span>Rp. 0</span>
+                    <span>Rp. 500.000</span>
+                </div>
+                <input type="range" min="0" max="100" step="1" class="w-full">
             </div>
-            <input type="range" class="price-slider" min="0" max="100" step="1">
 
             <!-- Rating Section -->
-            <h1>Rating</h1>
-            <div class="rating-group">
-                <button class="rating-button">
-                    <div class="star-icon">★★★★★</div>
-                </button>
-                <button class="rating-button">
-                    <div class="star-icon">★★★★</div>
-                </button>
-                <button class="rating-button">
-                    <div class="star-icon">★★★</div>
-                </button>
-                <button class="rating-button">
-                    <div class="star-icon">★★</div>
-                </button>
-                <button class="rating-button">
-                    <div class="star-icon">★</div>
-                </button>
-                <button class="rating-button">
-                    <div class="star-icon">No Rating</div>
-                </button>
-            </div>
-        </div>
-
-        <!-- -------------------------------------KONTENT---------------------------------------- -->
-        <div class="box">
-            <div class="bg-white">
-                <div class="mx-auto max-w-5xl px-3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
-                    <a href="/dagodream" class="group">
-                        <img src="img/dagodream.jpg" alt="Tall slender porcelain bottle with natural clay textured body and cork stopper." class="aspect-square w-full rounded-lg bg-gray-200 object-cover group-hover:opacity-75 xl:aspect-[7/8]">
-                        <h2 class="mt-1 text-lg font-bold text-gray-900">Dago Dreampark Bandung</h2>
-                        <p class="mt-4 text-sm text-gray-700">Lembang, Kab.Bandung Barat</p>
-                        <h3 class="mt-1 text-lg font-bold text-red-500">Rp.27.000</h3>
-                    </a>
-                    <a href="#" class="group">
-                        <img src="img/dranch.jpeg" alt="Olive drab green insulated bottle with flared screw lid and flat top." class="aspect-square w-full rounded-lg bg-gray-200 object-cover group-hover:opacity-75 xl:aspect-[7/8]">
-                        <h2 class="mt-1 text-lg font-bold text-gray-900">D'ranch Bandung</h2>
-                        <p class="mt-4 text-sm text-gray-700">Lembang, Kab.Bandung Barat</p>
-                        <h3 class="mt-1 text-lg font-bold text-red-500">Rp.27.000</h3>
-
-                    </a>
-                    <a href="#" class="group">
-                        <img src="img/kawah.jpeg" alt="Person using a pen to cross a task off a productivity paper card." class="aspect-square w-full rounded-lg bg-gray-200 object-cover group-hover:opacity-75 xl:aspect-[7/8]">
-                        <h2 class="mt-1 text-lg font-bold text-gray-900">Kawah Putih Bandung</h2>
-                        <p class="mt-4 text-sm text-gray-700">Lembang, Kab.Bandung Barat</p>
-                        <h3 class="mt-1 text-lg font-bold text-red-500">Rp.27.000</h3>
-                    </a>
+            <div>
+                <h1 class="text-xl font-semibold mb-4">Star Rating</h1>
+                <div class="space-y-2">
+                    <button class="w-full py-2 bg-gray-200 text-left px-3 rounded-md">★★★★★</button>
+                    <button class="w-full py-2 bg-gray-200 text-left px-3 rounded-md">★★★★</button>
+                    <button class="w-full py-2 bg-gray-200 text-left px-3 rounded-md">★★★</button>
+                    <button class="w-full py-2 bg-gray-200 text-left px-3 rounded-md">★★</button>
+                    <button class="w-full py-2 bg-gray-200 text-left px-3 rounded-md">★</button>
+                    <button class="w-full py-2 bg-gray-200 text-left px-3 rounded-md">No Rating</button>
                 </div>
             </div>
         </div>
-    </div>
-    </div>
 
+        <!-- Product Section -->
+        <div class="w-3/2 grid grid-cols-3 gap-3 flex flex-col h-72">
+            <!-- Product Card -->
+            <div class="bg-white p-4 rounded-lg shadow-md">
+                <a href="/dagodream">
+                    <img src="img/dagodream.jpg" alt="Product Image" class="w-full h-48 object-cover rounded-lg mb-4">
+                    <div class="text-lg font-semibold">Dago Dreampark Bandung</div>
+                    <div class="text-gray-500">Bandung</div>
+                    <div class="mt-2 text-xl font-semibold">Rp. 27.000</div>    
+                </a>
+            </div>
+            <div class="bg-white p-4 rounded-lg shadow-md">
+                <a href="#">
+                    <img src="img/dranch.jpeg" alt="Product Image" class="w-full h-48 object-cover rounded-lg mb-4">
+                    <div class="text-lg font-semibold">D'Ranch Bandung</div>
+                    <div class="text-gray-500">Bandung</div>
+                    <div class="mt-2 text-xl font-semibold">Rp. 27.000</div>
+                </a>
+            </div>
+
+            <div class="bg-white p-4 rounded-lg shadow-md">
+                <a href="#"> 
+                    <img src="img/kawah.jpeg" alt="Product Image" class="w-full h-48 object-cover rounded-lg mb-4">
+                    <div class="text-lg font-semibold">Kawah Putih bandung</div>
+                    <div class="text-gray-500">Bandung</div>
+                    <div class="mt-2 text-xl font-semibold">Rp. 27.000</div>
+                </a> 
+            </div>
+        </div>
     </div>
+</div>
 
 </body>
-
 </html>

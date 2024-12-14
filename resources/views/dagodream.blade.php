@@ -1,53 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  @vite('resources/css/app.css')
-  <title>Dago Dreampark</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="css/dagodream.css">
-</head>
+<x-header></x-header>
 
 <body>
 
   <!--------------------------------------NAVBAR--------------------------------------------- -->
 
-  <div class="navbar">
-    <div class="logo">EksplorID</div>
-    <nav>
-      <ul>
-        <li><a href="/destinasi">Destinasi</a></li>
-      </ul>
-    </nav>
-    <div class="auth-buttons">
-      @auth
-      <form action="/logout" method="post">
-        @csrf
-        <button type="submit">Logout</button>
-      </form>
-      @else
-      <a href="/login" class="sign-in">Log in</a>
-      <a href="/createacc" class="create-account">Create Account</a>
-      @endauth
-    </div>
-    <div class="cart">
-      <a href="/keranjang">
-        <img src="img/cart.png" alt="cart" width="40px">
-      </a>
-    </div>
-  </div>
-  </div>
+  <x-Navbar></x-Navbar>
 
 
   <!-------------------------------------------KONTEN-------------------------------------------- -->
 
   <div class="bg-white">
-    <div class="pt-6">
+    <div class="">
       <nav aria-label="Breadcrumb">
-        <ol role="list" class="mx-auto flex max-w-2xl items-center space-x-2 px-4 sm:px-6 lg:max-w-7xl lg:px-8 mt-20 mb-10 ml-8">
+        <ol role="list" class="mx-auto flex max-w-2xl items-center space-x-2 px-4 sm:px-6 lg:max-w-7xl lg:px-8 mt-5 mb-10 ml-8">
           <li>
             <div class="flex items-center">
               <a href="#" class="mr-2 text-sm font-medium text-gray-500">Home</a>

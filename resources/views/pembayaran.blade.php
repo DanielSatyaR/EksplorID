@@ -1,49 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  @vite('resources/css/app.css')
-  <title>Pembayaran</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <link rel="stylesheet" href="css/pesanan.css">
-</head>
+<x-header> </x-header>
 
 <body>
 
-  <div class="navbar">
-    <div class="logo">EksplorID</div>
-    <nav>
-      <ul>
-        <li><a href="/destinasi">Destinasi</a></li>
-      </ul>
-    </nav>
-    <div class="auth-buttons">
-      @auth
-      <form action="/logout" method="post">
-        @csrf
-        <button type="submit">Logout</button>
-      </form>
-      @else
-      <a href="/login" class="sign-in">Log in</a>
-      <a href="/createacc" class="create-account">Create Account</a>
-      @endauth
-    </div>
-    <div class="cart">
-      <a href="/keranjang">
-        <img src="img/cart.png" alt="cart" width="40px">
-      </a>
-    </div>
-  </div>
-  </div>
-
+  <x-Navbar></x-Navbar>
   <!--------------------------------------------KONTEN----------------------------------------------  -->
 
   <!-- checkout number -->
 
-  <div class="container mx-auto pt-20 mt-5">
+  <div class="container mx-auto pt-5 mt-5">
     <div class="flex justify-center space-x-8 mb-8 mt-15">
       <div class="text-center">
         <div class="w-8 h-8 rounded-full bg-gray-300 text-gray flex items-center justify-center">1</div>

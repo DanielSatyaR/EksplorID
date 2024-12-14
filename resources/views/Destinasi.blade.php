@@ -1,43 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    @vite('resources/css/app.css')
-    <title>Destinasi</title>
-    <link rel="stylesheet" href="css/destinasi.css">
-</head>
+<x-header></x-header>
 
 <body>
 
     <!-- -----------------------------------------Navbar---------------------------------------------------------->
 
+   <x-Navbar></x-Navbar>
 
-    <div class="navbar">
-        <div class="logo">EksplorID</div>
-        <nav>
-            <ul>
-                <li><a href="/destinasi">Destinasi</a></li>
-            </ul>
-        </nav>
-        <div class="auth-buttons">
-            @auth
-            <form action="/logout" method="post">
-                @csrf
-                <button type="submit">Logout</button>
-            </form>
-            @else
-            <a href="/login" class="sign-in">Log in</a>
-            <a href="/createacc" class="create-account">Create Account</a>
-            @endauth
-        </div>
-    </div>
+
     <!-- ------------------------------------------Konten----------------------------------------------------- -->
 
     <div class="Konten">
-        <div class="container mx-auto max-w-1xl py-16 px-4 sm:px-6 lg:px-8">
+        <div class="container mx-auto max-w-1xl px-4 sm:px-6 lg:px-8">
             <div class="text1">
                 <h1> Temukan tempat-tempat di sekitar </h1>
             </div>

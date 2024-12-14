@@ -1,59 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    @vite('resources/css/app.css')
-    <title>Keranjang</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css" integrity="sha512-5Hs3dF2AEPkpNAR7UiOHba+lRSJNeM2ECkwxUIxC1Q/FLycGTbNapWXB4tP889k5T5Ju8fs4b1P5z/iB4nMfSQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="css/keranjang.css">
-</head>
+<x-header></x-header>
 
 <body>
 
-    <div class="navbar">
-        <div class="logo">EksplorID</div>
-        <nav>
-            <ul>
-                <li><a href="/destinasi">Destinasi</a></li>
-            </ul>
-        </nav>
-        <div class="auth-buttons">
-            @auth
-            <form action="/logout" method="post">
-                @csrf
-                <button type="submit">Logout</button>
-            </form>
-            @else
-            <a href="/login" class="sign-in">Log in</a>
-            <a href="/createacc" class="create-account">Create Account</a>
-            @endauth
-        </div>
-        <div class="cart">
-            <a href="/keranjang">
-                <img src="img/cart.png" alt="cart" width="40px">
-            </a>
-        </div>
-    </div>
-    </div>
+    <x-Navbar> </x-Navbar>
 
     <!--------------------------------------------KONTEN----------------------------------------------  -->
-
-    <body class="bg-gray-100 font-sans">
-        <div class="bg-white shadow p-4">
-            <div class="container mx-auto flex justify-between items-center">
-                <h1 class="text-xl font-bold">EksplorID</h1>
-                <div class="flex items-center gap-4">
-                    <a href="#" class="text-sm">Sign in</a>
-                    <a href="#" class="border border-gray-500 px-4 py-1 rounded-full text-sm hover:bg-gray-100">Create Account</a>
-                    <a href="#" class="text-gray-700">
-                        <i class="fas fa-shopping-cart text-xl"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
 
         <!-- kopnten -->
         <div class="container mx-auto p-6">
@@ -97,7 +51,7 @@
                         <span>1 item</span>
                         <span class="font-bold text-red-500">Rp.27.000</span>
                     </p>
-                    <a href="link-anda.html" class="w-full bg-blue-500 text-white mt-4 py-2 rounded-lg hover:bg-blue-700 text-center block">
+                    <a href="/pesanan" class="w-full bg-blue-500 text-white mt-4 py-2 rounded-lg hover:bg-blue-700 text-center block">
                         Lanjut Pembayaran
                     </a>
                 </div>
