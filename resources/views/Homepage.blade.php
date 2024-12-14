@@ -10,18 +10,18 @@
 
 <!-- BANNER -->
 
-    <div class="banner">
-        <!-- Ganti "your-image.jpg" dengan jalur gambar latar Anda -->
-        <img src="img/holidaybanner.jpg" alt="Background Image">
-        <div class="banner-content">
-            <h1>EKSPLORE IMPIANMU</h1>
-            <p>Buatlah pengalaman serumu</p>
-            <div class="search-box">
-                <input type="text" placeholder="Jakarta">
-                <button>Cari</button>
-            </div>
+<div class="relative">
+    <img src="img/holidaybanner.jpg" alt="Background Image" class="w-full h-auto object-cover">
+    <div class="absolute top-0 left-0 w-full h-full flex flex-col justify-center items-center text-center bg-black bg-opacity-50">
+        <h1 class="text-white text-4xl font-bold">EKSPLORE IMPIANMU</h1>
+        <p class="text-white text-xl mt-2">Buatlah pengalaman serumu</p>
+        <div class="mt-4 flex space-x-4">
+            <input type="text" placeholder="Jakarta" class="border-none p-3 rounded-lg w-72">
+            <button class="bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-700">Cari</button>
         </div>
     </div>
+</div>
+
 
     <!-- --------------------------------KONTENT------------------------------------------- -->
 

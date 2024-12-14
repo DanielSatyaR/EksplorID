@@ -1,4 +1,4 @@
-<div class="min-w-full">
+<div class="min-w-full sticky top-0 z-50 bg-white shadow-md">
   <nav class="bg-white" x-data="{ isOpen: false }">
     <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 ">
       <div class="flex h-16 items-center justify-between">
