@@ -1,14 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <!-- HEADER -->
-    <x-header></x-header>
+
+<x-header></x-header>
 
 <body>
     
-    <!-- NAVBAR -->
-    <x-navbar> </x-navbar>
-
+<x-Navbar></x-Navbar>
 
 <!-- BANNER -->
 
