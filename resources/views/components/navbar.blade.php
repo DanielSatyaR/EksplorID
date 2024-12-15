@@ -56,7 +56,7 @@
             </div>
 
             @else
-            <div class="auth-buttons">
+            <div class="auth-buttons space-x-4">
               <a href="/login" class="sign-in">Sign in</a>
               <a href="/createacc" class="create-account">Create Account</a>
             </div>
