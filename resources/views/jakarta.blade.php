@@ -84,7 +84,7 @@
         <div class="w-3/2 grid grid-cols-3 gap-3 flex flex-col h-72">
             <!-- Product Card -->
             <div class="bg-white p-4 rounded-lg shadow-md">
-                <a href="#">
+                <a href="/jakarta/TamanMini">
                     <img src="img/tmi.jpg" alt="Product Image" class="w-full h-48 object-cover rounded-lg mb-4">
                     <div class="text-lg font-semibold">Taman Mini Indonesia</div>
                     <div class="text-gray-500">Jakarta</div>
@@ -92,7 +92,7 @@
                 </a>
             </div>
             <div class="bg-white p-4 rounded-lg shadow-md">
-                <a href="#">
+                <a href="/jakarta/dufan">
                     <img src="img/dufan.png" alt="Product Image" class="w-full h-48 object-cover rounded-lg mb-4">
                     <div class="text-lg font-semibold">Dunia Fantasi</div>
                     <div class="text-gray-500">Jakarta</div>
@@ -101,7 +101,7 @@
             </div>
 
             <div class="bg-white p-4 rounded-lg shadow-md">
-                <a href="#"> 
+                <a href="/jakarta/aquarium"> 
                     <img src="img/jktaqua.jpeg" alt="Product Image" class="w-full h-48 object-cover rounded-lg mb-4">
                     <div class="text-lg font-semibold">Jakarta Aquarium Safari</div>
                     <div class="text-gray-500">Jakarta</div>

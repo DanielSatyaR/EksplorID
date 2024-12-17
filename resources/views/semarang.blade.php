@@ -84,7 +84,7 @@
         <div class="w-3/2 grid grid-cols-3 gap-3 flex flex-col h-72">
             <!-- Product Card -->
             <div class="bg-white p-4 rounded-lg shadow-md">
-                <a href="#">
+                <a href="/semarang/saloka">
                     <img src="img/saloka.jpg" alt="Product Image" class="w-full h-48 object-cover rounded-lg mb-4">
                     <div class="text-lg font-semibold">Saloka Theme Park</div>
                     <div class="text-gray-500">Malang</div>

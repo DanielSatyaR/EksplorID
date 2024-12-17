@@ -84,7 +84,7 @@
         <div class="w-3/2 grid grid-cols-3 gap-3 flex flex-col h-72">
             <!-- Product Card -->
             <div class="bg-white p-4 rounded-lg shadow-md">
-                <a href="#">
+                <a href="/yogyakarta/borobudur">
                     <img src="img/candiB.jpg" alt="Product Image" class="w-full h-48 object-cover rounded-lg mb-4">
                     <div class="text-lg font-semibold">Candi Borobudur</div>
                     <div class="text-gray-500">Yogyakarta</div>
@@ -92,7 +92,7 @@
                 </a>
             </div>
             <div class="bg-white p-4 rounded-lg shadow-md">
-                <a href="#">
+                <a href="/yogyakarta/prambanan">
                     <img src="img/candiP.jpg" alt="Product Image" class="w-full h-48 object-cover rounded-lg mb-4">
                     <div class="text-lg font-semibold">Candi Prambanan</div>
                     <div class="text-gray-500">Yogyakarta</div>
@@ -101,7 +101,7 @@
             </div>
 
             <div class="bg-white p-4 rounded-lg shadow-md">
-                <a href="#"> 
+                <a href="/yogyakarta/tamansari"> 
                     <img src="img/tamansari.jpg" alt="Product Image" class="w-full h-48 object-cover rounded-lg mb-4">
                     <div class="text-lg font-semibold">Taman Sari Keraton</div>
                     <div class="text-gray-500">Yogyakarta</div>
