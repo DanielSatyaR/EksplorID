@@ -17,6 +17,7 @@
                     <h2 class="text-lg font-bold mb-4">Keranjang Kamu (1)</h2>
 
                     <!-- Item -->
+
                     <div class="border rounded-lg p-4 mb-4 shadow-sm">
                         <div class="flex items-start gap-4">
                             <img src="img/dagodream.jpg" alt="dagodream" class="w-[100px] h-[100px] object-cover rounded-lg">
@@ -37,6 +38,21 @@
                                 </button>
                             </div>
                         </div>
+
+                    <div class="flex items-center justify-between mt-4">
+                        <span class="text-gray-600">Jumlah Tiket:</span>
+                        <div class="flex items-center gap-2">
+                            <button class="border px-2 py-1 text-gray-600 hover:bg-gray-100 rounded-lg">
+                                <i class="fas fa-minus"></i>
+                            </button>
+                            <span class="text-lg font-bold w-8 text-center border px-2">1</span>
+                            <button class="border px-2 py-1 text-gray-600 hover:bg-gray-100 rounded-lg">
+                                <i class="fas fa-plus"></i>
+                            </button>
+                        </div>
+                    </div>
+
+
                         <div class="border-t mt-4 pt-2 flex justify-between">
                             <span>Total:</span>
                             <span class="font-bold text-red-500">Rp.27.000</span>
@@ -45,6 +61,7 @@
                 </div>
 
                 <!-- Total Pembayaran -->
+
                 <div class="w-full md:w-1/3 bg-white p-6 rounded-lg shadow">
                     <h2 class="text- font-bold mb-4">Total Pembayaran</h2>
                     <p class="flex justify-between">

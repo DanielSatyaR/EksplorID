@@ -84,7 +84,7 @@
         <div class="w-3/2 grid grid-cols-3 gap-3 flex flex-col h-72">
             <!-- Product Card -->
             <div class="bg-white p-4 rounded-lg shadow-md">
-                <a href="/dagodream">
+                <a href="/bandung/dagodream">
                     <img src="img/dagodream.jpg" alt="Product Image" class="w-full h-48 object-cover rounded-lg mb-4">
                     <div class="text-lg font-semibold">Dago Dreampark Bandung</div>
                     <div class="text-gray-500">Bandung</div>
@@ -92,7 +92,7 @@
                 </a>
             </div>
             <div class="bg-white p-4 rounded-lg shadow-md">
-                <a href="#">
+                <a href="/bandung/dranch">
                     <img src="img/dranch.jpeg" alt="Product Image" class="w-full h-48 object-cover rounded-lg mb-4">
                     <div class="text-lg font-semibold">D'Ranch Bandung</div>
                     <div class="text-gray-500">Bandung</div>
@@ -101,7 +101,7 @@
             </div>
 
             <div class="bg-white p-4 rounded-lg shadow-md">
-                <a href="#"> 
+                <a href="/bandung/kawahputih"> 
                     <img src="img/kawah.jpeg" alt="Product Image" class="w-full h-48 object-cover rounded-lg mb-4">
                     <div class="text-lg font-semibold">Kawah Putih bandung</div>
                     <div class="text-gray-500">Bandung</div>

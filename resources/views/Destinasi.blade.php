@@ -17,7 +17,8 @@
             <div class="text1">
                 <h1> Temukan tempat-tempat di sekitar </h1>
             </div>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
                 <!-- Card 1 -->
                 <a href="/bali" class="block">
                     <div class="relative w-full h-48 rounded-xl overflow-hidden shadow-md">
@@ -64,6 +65,10 @@
                     </a>
             </div>
         </div>
+
+<x-footer></x-footer>
+
+
 </body>
 
 </html>

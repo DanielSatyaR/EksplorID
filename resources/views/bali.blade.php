@@ -84,7 +84,7 @@
         <div class="w-3/2 grid grid-cols-3 gap-3 flex flex-col h-72">
             <!-- Product Card -->
             <div class="bg-white p-4 rounded-lg shadow-md">
-                <a href="#">
+                <a href="/bali/balisafari">
                     <img src="img/balisafari.jpeg" alt="Product Image" class="w-full h-48 object-cover rounded-lg mb-4">
                     <div class="text-lg font-semibold">Bali Safari and Marine Park</div>
                     <div class="text-gray-500">Blahbatuh, Gianyar</div>
@@ -92,7 +92,7 @@
                 </a>
             </div>
             <div class="bg-white p-4 rounded-lg shadow-md">
-                <a href="#">
+                <a href="/bali/balibird">
                     <img src="img/balibird.png" alt="Product Image" class="w-full h-48 object-cover rounded-lg mb-4">
                     <div class="text-lg font-semibold">Bali Bird Park</div>
                     <div class="text-gray-500">Sukawati, Gianyar</div>
@@ -101,7 +101,7 @@
             </div>
 
             <div class="bg-white p-4 rounded-lg shadow-md">
-                <a href="#"> 
+                <a href="/bali/kecakuluwatu"> 
                     <img src="img/kecak.jpeg" alt="Product Image" class="w-full h-48 object-cover rounded-lg mb-4">
                     <div class="text-lg font-semibold">Kecak Uluwatu</div>
                     <div class="text-gray-500">South kuta, Badung</div>

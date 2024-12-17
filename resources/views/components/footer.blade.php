@@ -34,16 +34,16 @@
         <h3 class="text-lg font-semibold">Pembayaran</h3>
         <div class="mt-4 flex space-x-4">
         <a href="#" class="text-gray-400 hover:text-white">
-            <img src="img/bca.jpg" alt="bca" class="h-12 w-20 rounded-[10px]">
+            <img src="../img/bca.jpg" alt="bca" class="h-12 w-20 rounded-[10px]">
         </a>
         <a href="#" class="text-gray-400 hover:text-white">
-            <img src="img/mandiri.jpg" alt="bca" class="h-12 w-20 rounded-[10px]">
+            <img src="../img/mandiri.jpg" alt="bca" class="h-12 w-20 rounded-[10px]">
         </a>
         <a href="#" class="text-gray-400 hover:text-white">
-            <img src="img/bni.png" alt="bca" class="h-12 w-20 rounded-[10px]">
+            <img src="../img/bni.png" alt="bca" class="h-12 w-20 rounded-[10px]">
         </a>
         <a href="#" class="text-gray-400 hover:text-white">
-            <img src="img/qris.jpg" alt="bca" class="h-12 w-20 rounded-[10px]">
+            <img src="../img/qris.jpg" alt="bca" class="h-12 w-20 rounded-[10px]">
         </a>
          
         </div>
