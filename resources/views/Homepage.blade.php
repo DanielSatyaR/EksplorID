@@ -33,26 +33,26 @@
                     <h1>Aktivitas Trending di Bandung</h1>
                     <a href="/bandung" class="text-1xl text-right mb-6 block">Lainnya &gt;&gt;</a>
                     <div class="mx-auto max-w-5xl px-2 py-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                        <a href="/dagodream" class="group">
+                        <a href="/bandung/dagodream" class="group">
                             <img src="img/dagodream.jpg" alt="Dagodream" class="aspect-square w-full rounded-lg bg-gray-200 object-cover group-hover:opacity-75 xl:aspect-[7/8]">
                             <h2 class="mt-1 text-lg font-medium text-gray-900">Dago Dreampark Bandung</h2>
                             <p class="mt-4 text-sm text-gray-700">Lembang, Kab.Bandung Barat</p>
                             <h3 class="mt-1 text-lg font-bold text-red-500">Rp.27.000</h3>
                         </a>
-                        <a href="#" class="group">
+                        <a href="/bandung/dranch" class="group">
                             <img src="img/dranch.jpeg" alt="Dranch" class="aspect-square w-full rounded-lg bg-gray-200 object-cover group-hover:opacity-75 xl:aspect-[7/8]">
                             <h2 class="mt-1 text-lg font-medium text-gray-900">D'ranch Bandung</h2>
                             <p class="mt-4 text-sm text-gray-700">Lembang, Kab.Bandung Barat</p>
                             <h3 class="mt-1 text-lg font-bold text-red-500">Rp.27.000</h3>
 
                         </a>
-                        <a href="#" class="group">
+                        <a href="/bandung/kawahputih" class="group">
                             <img src="img/kawah.jpeg" alt="Kawahputih" class="aspect-square w-full rounded-lg bg-gray-200 object-cover group-hover:opacity-75 xl:aspect-[7/8]">
                             <h2 class="mt-1 text-lg font-medium text-gray-900">Kawah Putih Bandung</h2>
                             <p class="mt-4 text-sm text-gray-700">Lembang, Kab.Bandung Barat</p>
                             <h3 class="mt-1 text-lg font-bold text-red-500">Rp.27.000</h3>
                         </a>
-                        <a href="#" class="group">
+                        <a href="/bandung/dagodream" class="group">
                             <img src="img/floating.jpg" alt="Hand holding black machined steel mechanical pencil with brass tip and top." class="aspect-square w-full rounded-lg bg-gray-200 object-cover group-hover:opacity-75 xl:aspect-[7/8]">
                             <h2 class="mt-1 text-lg font-medium text-gray-900">Floating Market Bandung</h2>
                             <p class="mt-4 text-sm text-gray-700">Lembang, Kab.Bandung Barat</p>

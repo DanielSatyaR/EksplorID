@@ -84,7 +84,7 @@
         <div class="w-3/2 grid grid-cols-3 gap-3 flex flex-col h-72">
             <!-- Product Card -->
             <div class="bg-white p-4 rounded-lg shadow-md">
-                <a href="#">
+                <a href="/malang/jatim1">
                     <img src="img/jatimpark1.png" alt="Product Image" class="w-full h-48 object-cover rounded-lg mb-4">
                     <div class="text-lg font-semibold">Jatim Park 1</div>
                     <div class="text-gray-500">Malang</div>
@@ -92,7 +92,7 @@
                 </a>
             </div>
             <div class="bg-white p-4 rounded-lg shadow-md">
-                <a href="#">
+                <a href="/malang/jatim2">
                     <img src="img/jatimpark2.jpg" alt="Product Image" class="w-full h-48 object-cover rounded-lg mb-4">
                     <div class="text-lg font-semibold">Jatim Park 2</div>
                     <div class="text-gray-500">Malang</div>
@@ -101,7 +101,7 @@
             </div>
 
             <div class="bg-white p-4 rounded-lg shadow-md">
-                <a href="#"> 
+                <a href="/malang/jatim3"> 
                     <img src="img/jatimpark3.jpg" alt="Product Image" class="w-full h-48 object-cover rounded-lg mb-4">
                     <div class="text-lg font-semibold">Jaitm Park 3</div>
                     <div class="text-gray-500">Malang</div>

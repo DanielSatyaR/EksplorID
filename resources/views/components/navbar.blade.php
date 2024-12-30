@@ -5,7 +5,7 @@
         <div class="flex items-center">
           <div class="shrink-0">
             <a href="/homepage">
-              <img class="w-32 h-20" src="img/logo.png" alt="EksplorID">
+              <img class="w-32 h-20" src="../img/logo.png" alt="EksplorID">
             </a>
           </div>
           <div class="hidden md:block">
@@ -19,7 +19,7 @@
         </div>
 
         <a href="/keranjang" class="relative ml-auto">
-          <img src="img/cart.png" alt="Cart Icon" class="w-8 h-8">
+          <img src="../img/cart.png" alt="Cart Icon" class="w-8 h-8">
           <span class="absolute top-0 right-0 bg-red-600 text-white text-xs rounded-full w-4 h-3 flex items-center justify-center">3</span>
         </a>
 
@@ -47,7 +47,7 @@
                 x-transition:leave-end="opacity-0 scale-95"
                 class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black/5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button" tabindex="-1">
                 <!-- Active: "bg-gray-100 outline-none", Not Active: "" -->
-                <a href="/dashboard" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Dashboard</a>
+                <a href="/dashboard.index" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-0">Dashboard</a>
                 <form action="/logout" method="post">
                   @csrf
                   <button type="submit" class="block px-4 py-2 text-sm text-gray-700" role="menuitem" tabindex="-1" id="user-menu-item-2">Logout</button>
@@ -56,7 +56,7 @@
             </div>
 
             @else
-            <div class="auth-buttons">
+            <div class="auth-buttons space-x-4">
               <a href="/login" class="sign-in">Sign in</a>
               <a href="/createacc" class="create-account">Create Account</a>
             </div>
