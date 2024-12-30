@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DestinasiController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
@@ -11,6 +12,12 @@ Route::post('/logout', [LoginController::class, 'logout']);
 
 Route::get('/createacc', [RegisterController::class, 'index'])->middleware('guest');
 Route::post('/createacc', [RegisterController::class, 'store']);
+
+Route::get('/dashboard.index', function () {
+    return view('dashboard.index');
+})->middleware('auth');
+
+Route::resource('/destinasi-wisata/destinasi', DestinasiController::class)->middleware('auth');
 
 Route::get('/homepage', function () {
     return view('homepage');
