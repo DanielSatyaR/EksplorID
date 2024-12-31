@@ -13,11 +13,19 @@ Route::post('/logout', [LoginController::class, 'logout']);
 Route::get('/createacc', [RegisterController::class, 'index'])->middleware('guest');
 Route::post('/createacc', [RegisterController::class, 'store']);
 
-Route::get('/dashboard.index', function () {
+Route::get('/dashboard/index', function () {
     return view('dashboard.index');
 })->middleware('auth');
 
+Route::get('/destinasi-wisata/create', function () {
+    return view('dashboard.destinasi-wisata.create');
+})->middleware('auth');
+
 Route::resource('/destinasi-wisata/destinasi', DestinasiController::class)->middleware('auth');
+
+Route::get('/dashboard/user', function () {
+    return view('/dashboard.user');
+})->middleware('auth');
 
 Route::get('/homepage', function () {
     return view('homepage');

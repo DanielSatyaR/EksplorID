@@ -14,7 +14,7 @@ class DestinasiController extends Controller
 
     public function create()
     {
-        return view('dashboard.destinasi-wisata.create');
+        // return view('/dashboard.destinasi-wisata.create');
     }
 
     public function store(Request $request)

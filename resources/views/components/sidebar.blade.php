@@ -8,10 +8,9 @@
         <div class="flex-1 overflow-y-auto">
             <ul class="mt-6 space-y-2">
                 <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
-                <li><a href="#" class="block px-4 py-2 text-sm font-medium text-white bg-gray-900 rounded-md" aria-current="page">Dashboard</a></li>
-                <li><a href="/destinasi-wisata/destinasi" class="block px-4 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white rounded-md">Destinasi Wisata</a></li>
-                <li><a href="#" class="block px-4 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white rounded-md">Tiket</a></li>
-                <li><a href="#" class="block px-4 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white rounded-md">User</a></li>
+                <li><a href="/dashboard/index" class="block px-4 py-2 text-sm font-medium {{ Request::is('dashboard/index') ? 'text-white bg-gray-900' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }}  rounded-md" aria-current="page">Dashboard</a></li>
+                <li><a href="/destinasi-wisata/destinasi" class="block px-4 py-2 text-sm font-medium {{ Request::is('destinasi-wisata/destinasi') ? 'text-white bg-gray-900' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }}  rounded-md">Destinasi Wisata</a></li>
+                <li><a href="/dashboard/user" class="block px-4 py-2 text-sm font-medium {{ Request::is('dashboard/user') ? 'text-white bg-gray-900' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }}  rounded-md">User</a></li>
             </ul>
         </div>
         <div class="flex items-center justify-between px-4 py-4 bg-gray-900">
