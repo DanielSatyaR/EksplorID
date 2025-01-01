@@ -6,70 +6,42 @@ use App\Http\Controllers\RegisterController;
 use Illuminate\Support\Facades\Route;
 
 
-Route::get('/login', [LoginController::class, 'index'])->middleware('guest');
+Route::get('/homepage', function () {
+    return view('homepage', ['title' => 'Home Page']);
+});
+
+// Authentication Routes
+Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout']);
-
 Route::get('/createacc', [RegisterController::class, 'index'])->middleware('guest');
 Route::post('/createacc', [RegisterController::class, 'store']);
 
-Route::get('/dashboard/index', function () {
-    return view('dashboard.index');
-})->middleware('auth');
+// Dashboard Routes
+Route::middleware(['auth'])->group(function () {
+    Route::view('/dashboard/index', 'dashboard.index', ['title' => 'Halaman Dashboard']);
+    Route::view('/dashboard/user', 'dashboard.user', ['title' => 'Halaman Dashboard']);
 
-Route::get('/destinasi-wisata/create', function () {
-    return view('dashboard.destinasi-wisata.create');
-})->middleware('auth');
+    // Destinasi Wisata
+    Route::get('/dashboard/destinasi-wisata/create/checkSlug', [DestinasiController::class, 'checkSlug']);
+    Route::resource('/dashboard/destinasi-wisata', DestinasiController::class);
 
-Route::resource('/destinasi-wisata/destinasi', DestinasiController::class)->middleware('auth');
-
-Route::get('/dashboard/user', function () {
-    return view('/dashboard.user');
-})->middleware('auth');
-
-Route::get('/homepage', function () {
-    return view('homepage');
+    Route::get('/dashboard/destinasi-wisata', [DestinasiController::class, 'index'])->name('destinasi.index');
 });
 
-Route::get('/destinasi', function () {
-    return view('destinasi');
-});
+// Halaman Destinasi
+Route::view('/destinasi', 'destinasi', ['title' => 'Destinasi']);
 
-Route::get('/bandung', function () {
-    return view('bandung');
-});
+// Halaman Kota
+$kotaRoutes = ['bandung', 'jakarta', 'bali', 'yogya', 'malang', 'semarang'];
+foreach ($kotaRoutes as $kota) {
+    Route::view("/$kota", $kota, ['title' => ucfirst($kota)]);
+}
 
-Route::get('/jakarta', function () {
-    return view('jakarta');
-});
-
-Route::get('/bali', function () {
-    return view('bali');
-});
-
-Route::get('/yogya', function () {
-    return view('yogya');
-});
-
-Route::get('/malang', function () {
-    return view('malang');
-});
-
-Route::get('/semarang', function () {
-    return view('semarang');
-});
-
-Route::get('/keranjang', function () {
-    return view('keranjang');
-});
-
-Route::get('/pesanan', function () {
-    return view('pesanan');
-});
-
-Route::get('/pembayaran', function () {
-    return view('pembayaran');
-});
+// Halaman Lainnya
+Route::view('/keranjang', 'keranjang', ['title' => 'Keranjang']);
+Route::view('/pesanan', 'pesanan', ['title' => 'Pesanan']);
+Route::view('/pembayaran', 'pembayaran', ['title' => 'Pembayaran']);
 
 
 // ------------------------ WISATA ---------------------
