@@ -3,35 +3,11 @@
 use App\Http\Controllers\DestinasiController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
-use App\Models\Category;
-use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 
 Route::get('/homepage', function () {
     return view('homepage', ['title' => 'Home Page']);
-});
-
-Route::get('/destinasi/{destinasi:slug}', function (App\Models\Destinasi $destinasi) {
-    return view('destinasi', [
-        'title' => 'Single Destinasi',
-        'destinasi' => $destinasi
-    ]);
-});
-
-// Authors and Categories
-Route::get('/authors/{user:username}', function (User $user) {
-    return view('posts', [
-        'title' => count($user->posts) . ' Articles By ' . $user->name,
-        'posts' => $user->posts,
-    ]);
-});
-
-Route::get('/categories/{category:slug}', function (Category $category) {
-    return view('posts', [
-        'title' => 'Articles in: ' . $category->name,
-        'posts' => $category->posts,
-    ]);
 });
 
 // Authentication Routes
@@ -47,12 +23,10 @@ Route::middleware(['auth'])->group(function () {
     Route::view('/dashboard/user', 'dashboard.user', ['title' => 'Halaman Dashboard']);
 
     // Destinasi Wisata
-    Route::get('/dashboard/destinasi-wisata/create', [DestinasiController::class, 'create'])->name('destinasi.create');
     Route::get('/dashboard/destinasi-wisata/create/checkSlug', [DestinasiController::class, 'checkSlug']);
     Route::resource('/dashboard/destinasi-wisata', DestinasiController::class);
 
-    // Tambahan Dashboard Routes
-    Route::view('/dashboard/destinasi-wisata', 'dashboard.destinasi-wisata.destinasi', ['title' => 'Halaman Dashboard']);
+    Route::get('/dashboard/destinasi-wisata', [DestinasiController::class, 'index'])->name('destinasi.index');
 });
 
 // Halaman Destinasi

@@ -16,7 +16,8 @@ class DestinasiController extends Controller
     {
         $userId = Auth::id();
         return view('dashboard.destinasi-wisata.destinasi', [
-            'destinasiWisata' => Destinasi::where('author_id', $userId)->get()
+            'destinasiWisata' => Destinasi::all(),
+            'categories' => Category::all()
         ]);
     }
 
@@ -61,6 +62,8 @@ class DestinasiController extends Controller
 
     public function edit(Destinasi $destinasi)
     {
+        $categories = Category::all();
+
         return view('dashboard.destinasi-wisata.edit', [
             'destinasi' => $destinasi,
             'categories' => Category::all()
@@ -69,29 +72,26 @@ class DestinasiController extends Controller
 
     public function update(Request $request, Destinasi $destinasi)
     {
+        $destinasi = Destinasi::findOrFail($request->id);
+
         $rules = [
             'title' => 'required|max:255',
-            'slug' => 'required|unique:destinasi',
+            'slug' => 'required|unique:destinasi,slug,' . $destinasi->id,
             'category_id' => 'required|exists:categories,id',
             'image' => 'nullable|image|file|max:4024',
-            'body' => 'required'
+            'description' => 'required'
         ];
-
-        if ($request->slug != $destinasi->slug) {
-            $rules['slug'] = 'required|unique:destinasis';
-        }
 
         $validatedData = $request->validate($rules);
 
+        // Menangani penambahan gambar baru (gambar lama tetap ada)
         if ($request->file('image')) {
-            if ($destinasi->image) {
-                Storage::disk('public')->delete($destinasi->image);
-            }
-            $validatedData['image'] = $request->file('image')->store('post-images', 'public');
+            $validatedData['image'] = $request->file('image')->store('destinasi-images');
+        } else {
+            $validatedData['image'] = $destinasi->image;
         }
 
-        $validatedData['author_id'] = Auth::id();
-        $validatedData['excerpt'] = Str::limit(strip_tags($request->body), 200);
+        $validatedData['excerpt'] = Str::limit(strip_tags($request->description), 200);
 
         $destinasi->update($validatedData);
 
