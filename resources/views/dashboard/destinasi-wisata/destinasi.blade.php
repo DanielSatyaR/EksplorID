@@ -76,3 +76,28 @@
         </div>
     </div>
 </div>
+
+<script>
+    // Mendapatkan elemen modal dan tombol
+    const openModalBtn = document.getElementById('openModalBtn');
+    const closeModalBtn = document.getElementById('closeModalBtn');
+    const editModal = document.getElementById('editModal');
+
+    // Fungsi untuk membuka modal
+    openModalBtn.addEventListener('click', function(event) {
+        event.preventDefault();
+        editModal.classList.remove('hidden');
+    });
+
+    // Fungsi untuk menutup modal
+    closeModalBtn.addEventListener('click', function() {
+        editModal.classList.add('hidden');
+    });
+
+    // Menutup modal saat klik di luar modal
+    window.addEventListener('click', function(event) {
+        if (event.target === editModal) {
+            editModal.classList.add('hidden');
+        }
+    });
+</script>
