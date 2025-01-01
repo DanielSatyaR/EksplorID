@@ -61,13 +61,7 @@
                                 class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
                                 Edit
                             </a>
-                            <!-- <form action="/dashboard/destinasi-wisata" method="post">
-                                @method('delete')
-                                @csrf
-                                <button class="font-medium text-red-600 dark:text-red-500 hover:underline" onclick="return confirm('Are You Sure?')">
-                                    Delete
-                                </button>
-                            </form> -->
+
                         </td>
                     </tr>
                     @endforeach

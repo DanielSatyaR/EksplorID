@@ -98,16 +98,7 @@ class DestinasiController extends Controller
         return redirect('/dashboard/destinasi-wisata')->with('success', 'Destinasi Has Been Updated!');
     }
 
-    public function destroy(Destinasi $destinasi)
-    {
-        if ($destinasi->image) {
-            Storage::disk('public')->delete($destinasi->image);
-        }
-
-        $destinasi->delete();
-
-        return redirect('/dashboard/destinasi-wisata')->with('success', 'Destinasi Has Been Deleted!');
-    }
+    public function destroy(Destinasi $destinasi) {}
 
     public function checkSlug(Request $request)
     {
