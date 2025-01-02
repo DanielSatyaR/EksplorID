@@ -5,7 +5,7 @@
 <x-header></x-header>
 
 <body>
-    
+
 <x-Navbar></x-Navbar>
 
 <!-- BANNER -->
@@ -16,8 +16,13 @@
         <h1 class="text-white text-4xl font-bold">EKSPLORE IMPIANMU</h1>
         <p class="text-white text-xl mt-2">Buatlah pengalaman serumu</p>
         <div class="mt-4 flex space-x-4">
+
+            <form action="{{ route('search') }}" method="GET" class="mt-6" id="search-form">
             <input type="text" placeholder="Jakarta" class="border-none p-3 rounded-lg w-72">
             <button class="bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-700">Cari</button>
+        </form>
+        <div id="suggestions" class="absolute bg-white border rounded mt-1 hidden"></div>
+
         </div>
     </div>
 </div>
@@ -30,6 +35,8 @@
         <div class="bg-white">
             <div class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-5 lg:max-w-7xl lg:px-8">
                 <div class="text1">
+
+            <div id="suggestions" class="absolute bg-white border rounded mt-1 hidden"></div>
                     <h1>Aktivitas Trending di Bandung</h1>
                     <a href="/bandung" class="text-1xl text-right mb-6 block">Lainnya &gt;&gt;</a>
                     <div class="mx-auto max-w-5xl px-2 py-4 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -120,10 +127,7 @@
                 </div>
             </div>
 
-<!-- ---------------------------------------------FOOTER------------------------------------------------------> 
-
+<!-- ---------------------------------------------FOOTER------------------------------------------------------>
 <x-footer></x-footer>
-
-</body>
-
+  </body>
 </html>
