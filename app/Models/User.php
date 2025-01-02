@@ -10,6 +10,7 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
+<<<<<<< HEAD
     /**
      * The attributes that are mass assignable.
      *
@@ -28,20 +29,18 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $hidden = [
+=======
+    protected $fillable = [
+        'name',
+        'email',
+        'noHp',
+>>>>>>> 8ae3a0f1354c373eff910b6bac57f61f28c0889f
         'password',
-        'remember_token',
     ];
 
-    /**
-     * Get the attributes that should be cast.
-     *
-     * @return array<string, string>
-     */
-    protected function casts(): array
+    public function index()
     {
-        return [
-            'email_verified_at' => 'datetime',
-            'password' => 'hashed',
-        ];
+        $users = User::all(); // Mengambil semua pengguna
+        return view('dashboard.users.index', compact('users')); // Mengirim data ke view
     }
 }
