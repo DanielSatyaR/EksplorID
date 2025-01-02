@@ -26,6 +26,12 @@ class Destinasi extends Model
         return $this->belongsTo(Category::class, 'category_id');
     }
 
+    // Relasi dengan DestinasiImages (gambar)
+    public function images()
+    {
+        return $this->hasMany(DestinasiImages::class);
+    }
+
     /**
      * Scope untuk filter query berdasarkan parameter pencarian.
      */
@@ -52,5 +58,10 @@ class Destinasi extends Model
         return [
             'slug' => ['source' => 'title']
         ];
+    }
+
+    public function getExcerptAttribute()
+    {
+        return \Illuminate\Support\Str::limit(strip_tags($this->description), 200);
     }
 }

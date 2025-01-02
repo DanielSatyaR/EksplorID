@@ -45,7 +45,9 @@
                             {{ $loop->iteration }}
                         </th>
                         <td class="px-6 py-2">
-                            <img class="w-auto h-[150px] rounded-md" src="{{ asset('storage/' . $destinasi->image) }}" alt="{{ $destinasi->title }}">
+                            @foreach ($destinasi->images as $image)
+                            <img src="{{ asset('storage/' . $image->image) }}" alt="Destinasi Image" class="w-full h-auto mb-4">
+                            @endforeach
                         </td>
                         <td class="px-6 py-4">
                             {{ $destinasi->category->name ?? 'Uncategorized' }}
@@ -57,15 +59,18 @@
                             {{ $destinasi->description }}
                         </td>
                         <td class="px-6 py-4">
-                            <a href="{{ route('destinasi-wisata.edit', $destinasi->id) }}"
-                                class="font-medium text-blue-600 dark:text-blue-500 hover:underline">
-                                Edit
+                            <a href="{{ route('destinasi-wisata.edit', $destinasi->slug) }}" class="text-yellow-500 hover:text-yellow-700">
+                                <span class="bg-yellow-100 text-yellow-700 px-2 py-1 rounded-full text-xs font-semibold">
+                                    <i class="fa-regular fa-pen-to-square"></i>
+                                </span>
                             </a>
-                            <form action="/dashboard/destinasi-wisata" method="post">
+                            <form action="{{ route('destinasi-wisata.destroy', $destinasi->slug) }}" method="POST" class="inline">
                                 @method('delete')
                                 @csrf
-                                <button class="font-medium text-red-600 dark:text-red-500 hover:underline" onclick="return confirm('Are You Sure?')">
-                                    Delete
+                                <button type="submit" onclick="return confirm('Are you sure?')" class="text-red-500 hover:text-red-700">
+                                    <span class="bg-red-100 text-red-700 px-2 py-1 rounded-full text-xs font-semibold">
+                                        <i class="fa-regular fa-circle-xmark"></i>
+                                    </span>
                                 </button>
                             </form>
                         </td>

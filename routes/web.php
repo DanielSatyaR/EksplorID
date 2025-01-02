@@ -24,7 +24,10 @@ Route::middleware(['auth'])->group(function () {
 
     // Destinasi Wisata
     Route::get('/dashboard/destinasi-wisata/create/checkSlug', [DestinasiController::class, 'checkSlug']);
-    Route::resource('/dashboard/destinasi-wisata', DestinasiController::class);
+
+    Route::resource('/dashboard/destinasi-wisata', DestinasiController::class)->parameters([
+        'destinasi-wisata' => 'destinasi:slug'
+    ]);
 
     Route::get('/dashboard/destinasi-wisata', [DestinasiController::class, 'index'])->name('destinasi.index');
 });
