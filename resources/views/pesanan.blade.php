@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
-
 <x-header> </x-header>
 
 <body>
 
-<x-navbar></x-navbar>
+  <x-navbar></x-navbar>
 
   <!--------------------------------------------KONTEN----------------------------------------------  -->
   <!-- konten -->
@@ -113,4 +110,14 @@
 
 </body>
 
-</html>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Ambil data dari localStorage
+    const jumlahTiket = localStorage.getItem('jumlahTiket') || 1; // Default ke 1 tiket jika tidak ada data
+    const totalHarga = localStorage.getItem('totalHarga') || 27000; // Default ke harga satu tiket
+
+    // Perbarui elemen di halaman pesanan
+    document.getElementById('jumlah-pax').textContent = `${jumlahTiket} tiket • ${jumlahTiket} orang`;
+    document.getElementById('total-harga-pesanan').textContent = `Rp.${Number(totalHarga).toLocaleString('id-ID')}`;
+  });
+</script>

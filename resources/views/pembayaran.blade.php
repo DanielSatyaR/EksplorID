@@ -1,6 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-
 <x-header> </x-header>
 
 <body>
@@ -33,9 +30,9 @@
     <div class="flex flex-col md:flex-row gap-6">
       <!-- Time -->
       <div class="bg-white p-6 rounded-lg shadow-md flex-1">
-        <div class="mb-4 ">
+        <div class="mb-4">
           <p class="text-gray-700 font-semibold">Berakhir Dalam</p>
-          <div class="text-red-500 text-2xl font-bold">00:10:00</div>
+          <div id="countdown" class="text-red-500 text-2xl font-bold">00:10:00</div>
         </div>
         <hr class="my-4">
         <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-1">
@@ -116,4 +113,36 @@
 
 </body>
 
-</html>
+<script>
+  // Set waktu awal dalam detik (10 menit)
+  let countdownTime = 600; // 10 menit = 600 detik
+
+  function startCountdown() {
+    const countdownElement = document.getElementById('countdown');
+
+    // Fungsi untuk memperbarui waktu
+    function updateCountdown() {
+      // Hitung jam, menit, dan detik
+      const hours = Math.floor(countdownTime / 3600);
+      const minutes = Math.floor((countdownTime % 3600) / 60);
+      const seconds = countdownTime % 60;
+
+      // Format waktu menjadi HH:MM:SS
+      countdownElement.textContent = `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+
+      // Kurangi waktu jika masih ada
+      if (countdownTime > 0) {
+        countdownTime--;
+      } else {
+        clearInterval(timer); // Hentikan timer jika waktu habis
+        countdownElement.textContent = "00:00:00";
+      }
+    }
+
+    // Panggil fungsi setiap 1 detik
+    const timer = setInterval(updateCountdown, 1000);
+  }
+
+  // Jalankan hitung mundur saat halaman dimuat
+  window.onload = startCountdown;
+</script>
