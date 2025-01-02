@@ -23,32 +23,36 @@ class DestinasiController extends Controller
 
     public function create()
     {
+        $categories = Category::all();
         return view('dashboard.destinasi-wisata.create', [
-            'categories' => Category::all()
+            'categories' => $categories
         ]);
     }
 
     public function store(Request $request)
     {
-
         $validatedData = $request->validate([
             'title' => 'required|max:255',
             'slug' => 'required|unique:destinasi',
             'category_id' => 'required|exists:categories,id',
-            'image' => 'image|file|max:4024',
-            'description' => 'required'
+            'images' => 'required|array',
+            'images.*' => 'image|file|max:4024',
+            'description' => 'required',
         ]);
 
-        // Proses file gambar jika ada
-        if ($request->file('image')) {
-            $validatedData['image'] = $request->file('image')->store('destinasi-images');
+        $images = [];
+        foreach ($request->file('images') as $image) {
+            $imagePath = $image->store('destinasi-images', 'public');
+            $images[] = ['image' => $imagePath];
         }
 
-        // Tambahkan excerpt (cuplikan deskripsi)
         $validatedData['excerpt'] = Str::limit(strip_tags($validatedData['description']), 200);
 
-        // Simpan data ke tabel `destinasi`
-        Destinasi::create($validatedData);
+        $destinasi = Destinasi::create($validatedData);
+
+        foreach ($images as $image) {
+            $destinasi->images()->create($image);
+        }
 
         return redirect('/dashboard/destinasi-wisata')->with('success', 'New Destinasi Has Been Added!');
     }
@@ -72,34 +76,34 @@ class DestinasiController extends Controller
 
     public function update(Request $request, Destinasi $destinasi)
     {
-        $destinasi = Destinasi::findOrFail($request->id);
-
-        $rules = [
+        $validatedData = $request->validate([
             'title' => 'required|max:255',
             'slug' => 'required|unique:destinasi,slug,' . $destinasi->id,
-            'category_id' => 'required|exists:categories,id',
-            'image' => 'nullable|image|file|max:4024',
-            'description' => 'required'
-        ];
+            'category_id' => 'required',
+            'description' => 'required',
+            'image' => 'image|file|max:4024',
+        ]);
 
-        $validatedData = $request->validate($rules);
-
-        // Menangani penambahan gambar baru (gambar lama tetap ada)
         if ($request->file('image')) {
-            $validatedData['image'] = $request->file('image')->store('destinasi-images');
-        } else {
-            $validatedData['image'] = $destinasi->image;
+            // Hapus gambar lama jika ada
+            if ($destinasi->image) {
+                Storage::delete('public/' . $destinasi->image);
+            }
+
+            // Simpan gambar baru ke folder `destinasi-images`
+            $validatedData['image'] = $request->file('image')->store('destinasi-images', 'public');
         }
 
-        $validatedData['excerpt'] = Str::limit(strip_tags($request->description), 200);
-
+        // Update data ke dalam database
         $destinasi->update($validatedData);
 
-        return redirect('/dashboard/destinasi-wisata')->with('success', 'Destinasi Has Been Updated!');
+        // Redirect kembali ke halaman dashboard dengan pesan sukses
+        return redirect('/dashboard/destinasi-wisata')->with('success', 'Destinasi berhasil diperbarui!');
     }
 
     public function destroy(Destinasi $destinasi)
     {
+        // Hapus gambar jika ada
         if ($destinasi->image) {
             Storage::disk('public')->delete($destinasi->image);
         }

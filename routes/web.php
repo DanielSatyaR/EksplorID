@@ -1,36 +1,46 @@
 <?php
 
 use App\Http\Controllers\DestinasiController;
+use App\Http\Controllers\GoogleController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
-
+// Homepage Route
 Route::get('/homepage', function () {
     return view('homepage', ['title' => 'Home Page']);
-});
+})->name('homepage');
 
 // Authentication Routes
-Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
-Route::post('/login', [LoginController::class, 'authenticate']);
-Route::post('/logout', [LoginController::class, 'logout']);
-Route::get('/createacc', [RegisterController::class, 'index'])->middleware('guest');
-Route::post('/createacc', [RegisterController::class, 'store']);
+Route::middleware('guest')->group(function () {
+    Route::get('/login', [LoginController::class, 'index'])->name('login');
+    Route::post('/login', [LoginController::class, 'authenticate']);
+    Route::get('/createacc', [RegisterController::class, 'index']);
+    Route::post('/createacc', [RegisterController::class, 'store']);
+
+    Route::get('auth/google', [GoogleController::class, 'redirect'])->name('google-auth');
+    Route::get('auth/google/callback', [GoogleController::class, 'callbackGoogle']);
+});
+
+Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
 
 // Dashboard Routes
-Route::middleware(['auth'])->group(function () {
-    Route::view('/dashboard/index', 'dashboard.index', ['title' => 'Halaman Dashboard']);
-    Route::view('/dashboard/user', 'dashboard.user', ['title' => 'Halaman Dashboard']);
-
-    // Destinasi Wisata
-    Route::get('/dashboard/destinasi-wisata/create/checkSlug', [DestinasiController::class, 'checkSlug']);
-    Route::resource('/dashboard/destinasi-wisata', DestinasiController::class);
+Route::middleware('auth')->group(function () {
+    Route::view('/dashboard/index', 'dashboard.index', ['title' => 'Halaman Dashboard'])->name('dashboard');
 
     Route::get('/dashboard/destinasi-wisata', [DestinasiController::class, 'index'])->name('destinasi.index');
+
+    Route::get('/dashboard/users', [UserController::class, 'index'])->name('users.index');
+    Route::delete('/dashboard/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
+    Route::get('/dashboard/destinasi-wisata/create/checkSlug', [DestinasiController::class, 'checkSlug'])->name('destinasi.checkSlug');
+    Route::resource('/dashboard/destinasi-wisata', DestinasiController::class)->parameters([
+        'destinasi-wisata' => 'destinasi:slug'
+    ]);
 });
 
 // Halaman Destinasi
-Route::view('/destinasi', 'destinasi', ['title' => 'Destinasi']);
+Route::view('/destinasi', 'destinasi', ['title' => 'Destinasi'])->name('destinasi');
 
 // Halaman Kota
 $kotaRoutes = ['bandung', 'jakarta', 'bali', 'yogya', 'malang', 'semarang'];

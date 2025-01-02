@@ -10,7 +10,7 @@
                 <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
                 <li><a href="/dashboard/index" class="block px-4 py-2 text-sm font-medium {{ Request::is('dashboard/index') ? 'text-white bg-gray-900' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }}  rounded-md" aria-current="page">Dashboard</a></li>
                 <li><a href="/dashboard/destinasi-wisata" class="block px-4 py-2 text-sm font-medium {{ Request::is('/dashboard/destinasi-wisata') ? 'text-white bg-gray-900' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }}  rounded-md">Destinasi Wisata</a></li>
-                <li><a href="/dashboard/user" class="block px-4 py-2 text-sm font-medium {{ Request::is('dashboard/user') ? 'text-white bg-gray-900' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }}  rounded-md">User</a></li>
+                <li><a href="/dashboard/users" class="block px-4 py-2 text-sm font-medium {{ Request::is('dashboard/users') ? 'text-white bg-gray-900' : 'text-gray-300 hover:bg-gray-700 hover:text-white' }}  rounded-md">User</a></li>
             </ul>
         </div>
         <div class="flex items-center justify-between px-4 py-4 bg-gray-900">
