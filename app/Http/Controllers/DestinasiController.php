@@ -34,15 +34,16 @@ class DestinasiController extends Controller
             'title' => 'required|max:255',
             'slug' => 'required|unique:destinasi',
             'category_id' => 'required|exists:categories,id',
-            'images' => 'required|array|min:1',
+            'images' => 'required|array',
             'images.*' => 'image|file|max:4024',
-            'description' => 'required'
+            'description' => 'required',
         ]);
 
-        // Proses file gambar jika ada
-        $imagePaths = [];
-        foreach ($request->file('images') as $image) {
-            $imagePaths[] = $image->store('destinasi-images');
+        // Proses upload gambar dan simpan gambar ke storage
+        $images = [];
+        foreach ($request->file('image') as $image) {
+            $imagePath = $image->store('destinasi-images', 'public');
+            $images[] = ['image' => $imagePath];
         }
 
         // Tambahkan excerpt (cuplikan deskripsi)
@@ -52,8 +53,8 @@ class DestinasiController extends Controller
         $destinasi = Destinasi::create($validatedData);
 
         // Simpan gambar ke tabel destinasi_images
-        foreach ($imagePaths as $path) {
-            $destinasi->images()->create(['image' => $path]);
+        foreach ($images as $image) {
+            $destinasi->images()->create($image);
         }
 
         return redirect('/dashboard/destinasi-wisata')->with('success', 'New Destinasi Has Been Added!');

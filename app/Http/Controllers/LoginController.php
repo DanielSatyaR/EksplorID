@@ -23,7 +23,12 @@ class LoginController extends Controller
 
         if (Auth::attempt($credentials)) {
             $request->session()->regenerate();
-            return redirect()->intended('/homepage');
+
+            if (Auth::user()->is_admin) {
+                return redirect()->route('dashboard');
+            } else {
+                return redirect()->route('homepage');
+            }
         }
 
         return back()->with('loginError', 'Login Failed!');
@@ -34,6 +39,7 @@ class LoginController extends Controller
         Auth::logout();
         request()->session()->invalidate();
         request()->session()->regenerateToken();
-        return redirect('/homepage');
+
+        return redirect()->route('homepage');
     }
 }

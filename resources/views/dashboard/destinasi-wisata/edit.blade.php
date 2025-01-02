@@ -53,15 +53,21 @@
 
             <!-- Image -->
             <div class="mb-2">
-                <label for="image" class="block text-sm font-medium text-gray-700">Image</label>
-                <input type="file" name="image" id="image"
-                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
-                @if ($destinasi->image)
-                <div class="mt-2">
-                    <img src="{{ asset('storage/' . $destinasi->image) }}" alt="{{ $destinasi->title }} image"
-                        class="w-[100px] h-[100px] object-cover rounded-md">
+                <label for="image" class="block text-sm font-medium text-gray-700">Current Images</label>
+                <div class="flex flex-wrap">
+                    @foreach($destinasi->images as $image)
+                    <div class="relative w-32 h-32 m-2">
+                        <img src="{{ asset('storage/' . $image->image) }}" alt="Image" class="w-full h-full object-cover">
+                        <button type="button" class="absolute top-0 right-0 bg-red-600 text-white p-1 rounded">X</button>
+                    </div>
+                    @endforeach
                 </div>
-                @endif
+            </div>
+
+            <!-- Form upload gambar baru -->
+            <div class="mb-2">
+                <label for="image" class="block text-sm font-medium text-gray-700">Upload New Images</label>
+                <input type="file" name="image[]" id="image" multiple>
             </div>
 
             <!-- Description -->
