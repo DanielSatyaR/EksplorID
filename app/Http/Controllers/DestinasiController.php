@@ -23,8 +23,9 @@ class DestinasiController extends Controller
 
     public function create()
     {
+        $categories = Category::all();
         return view('dashboard.destinasi-wisata.create', [
-            'categories' => Category::all()
+            'categories' => $categories
         ]);
     }
 
@@ -39,20 +40,16 @@ class DestinasiController extends Controller
             'description' => 'required',
         ]);
 
-        // Proses upload gambar dan simpan gambar ke storage
         $images = [];
-        foreach ($request->file('image') as $image) {
+        foreach ($request->file('images') as $image) {
             $imagePath = $image->store('destinasi-images', 'public');
             $images[] = ['image' => $imagePath];
         }
 
-        // Tambahkan excerpt (cuplikan deskripsi)
         $validatedData['excerpt'] = Str::limit(strip_tags($validatedData['description']), 200);
 
-        // Simpan data ke tabel `destinasi`
         $destinasi = Destinasi::create($validatedData);
 
-        // Simpan gambar ke tabel destinasi_images
         foreach ($images as $image) {
             $destinasi->images()->create($image);
         }
