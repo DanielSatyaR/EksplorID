@@ -8,7 +8,7 @@
     <div class="flex-1 p-4">
         <x-header></x-header>
 
-        <h3 class="text-xl font-semibold mb-4">Create Destinasi Wisata</h3>
+        <h3 class="text-xl font-semibold mb-4">Buat Destinasi Wisata Baru</h3>
         <form action="/dashboard/destinasi-wisata" method="POST" enctype="multipart/form-data">
             @csrf
 
@@ -50,9 +50,26 @@
 
             <!-- Image -->
             <div class="mb-2">
-                <label for="images" class="block text-sm font-medium text-gray-700">Image</label>
-                <input type="file" name="images[]" id="images" multiple
-                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500">
+                <label for="images" class="block text-sm font-medium text-gray-700">Upload Images</label>
+                <input type="file" name="images[]" id="images" multiple onchange="previewImages(event)">
+                @error('images.*')
+                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                @enderror
+            </div>
+
+            <div id="image-preview" class="mb-2 flex space-x-2 overflow-x-auto">
+                <!-- Selected images will be displayed here -->
+            </div>
+
+            <!-- Harga -->
+            <div class="mb-2">
+                <label for="price" class="block text-sm font-medium text-gray-700">Harga Tiket</label>
+                <input type="text" name="price" id="price" required value="{{ old('price') }}"
+                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500
+        @error('price') border-red-500 @enderror">
+                @error('price')
+                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                @enderror
             </div>
 
             <!-- Description -->
@@ -91,5 +108,26 @@
         document.addEventListener('trix-file-accept', function(e) {
             e.preventDefault();
         });
+
+        // Image Preview
+        function previewImages(event) {
+            const files = event.target.files;
+            const previewContainer = document.getElementById('image-preview');
+
+            // Loop image preview
+            for (let i = 0; i < files.length; i++) {
+                const file = files[i];
+                const reader = new FileReader();
+
+                reader.onload = function(e) {
+                    const img = document.createElement('img');
+                    img.src = e.target.result;
+                    img.classList.add('w-32', 'h-32', 'm-2', 'object-cover');
+                    previewContainer.appendChild(img);
+                }
+
+                reader.readAsDataURL(file);
+            }
+        }
     </script>
 </div>

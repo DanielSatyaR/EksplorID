@@ -18,15 +18,16 @@
           </div>
         </div>
 
+        @auth
+
         <a href="/keranjang" class="relative ml-auto">
           <img src="../img/cart.png" alt="Cart Icon" class="w-8 h-8">
-          <span class="absolute top-0 right-0 bg-red-600 text-white text-xs rounded-full w-4 h-3 flex items-center justify-center">3</span>
+          <!-- <span class="absolute top-0 right-0 bg-red-600 text-white text-xs rounded-full w-4 h-3 flex items-center justify-center"></span> -->
         </a>
 
         <div class="hidden md:block">
           <div class="ml-4 flex items-center md:ml-6">
 
-            @auth
             <!-- Profile dropdown -->
             <div class="relative ml-3">
               <div>

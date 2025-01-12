@@ -12,10 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('destinasi_images', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('destinasi_id')->constrained()->onDelete('cascade');
-            $table->string('image');
-            $table->timestamps();
+            $table->id(); // ID sebagai primary key
+            $table->foreignId('destinasi_id') // Foreign key ke tabel destinasi
+                ->constrained('destinasi') // Pastikan tabel "destinasi" sudah ada
+                ->onDelete('cascade'); // Hapus gambar jika destinasi dihapus
+            $table->string('image'); // Kolom untuk menyimpan path gambar
+            $table->timestamps(); // created_at dan updated_at
         });
     }
 

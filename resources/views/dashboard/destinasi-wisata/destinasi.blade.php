@@ -1,11 +1,11 @@
 <div class="flex h-screen">
     <!-- Sidebar -->
-    <div class="w-64 bg-gray-800 text-white">
+    <div class="w-64 bg-gray-800 text-white fixed h-screen">
         <x-sidebar></x-sidebar>
     </div>
 
     <!-- Main Content -->
-    <div class="flex-1 p-4">
+    <div class="flex-1 p-4 ml-64 overflow-auto h-screen">
         <x-header></x-header>
 
         <div class="flex justify-start mb-4 my-3">
@@ -32,6 +32,7 @@
                     <tr>
                         <th scope="col" class="px-6 py-3">No</th>
                         <th scope="col" class="px-6 py-3">Gambar</th>
+                        <th scope="col" class="px-6 py-3">Judul</th>
                         <th scope="col" class="px-6 py-3">Kota</th>
                         <th scope="col" class="px-6 py-3">Description</th>
                         <th scope="col" class="px-6 py-3">Tiket</th>
@@ -45,21 +46,24 @@
                             {{ $loop->iteration }}
                         </th>
                         <td class="px-6 py-2">
-                            @foreach ($destinasi->images as $image)
-                            <img src="{{ asset('storage/' . $image->image) }}" alt="Destinasi Image" class="w-full h-auto mb-4">
-                            @endforeach
-                        </td>
-                        <td class="px-6 py-4">
-                            {{ $destinasi->category->name ?? 'Uncategorized' }}
+                            @if($destinasi->images->isNotEmpty())
+                            <img src="{{ asset('storage/' . $destinasi->images->first()->image) }}" alt="Destinasi Image" class="max-w-xs h-auto mb-4">
+                            @endif
                         </td>
                         <td class="px-6 py-4">
                             {{ $destinasi->title }}
                         </td>
                         <td class="px-6 py-4">
+                            {{ $destinasi->category->name ?? 'Uncategorized' }}
+                        </td>
+                        <td class="px-6 py-4">
                             {{ $destinasi->description }}
                         </td>
                         <td class="px-6 py-4">
-                            <a href="{{ route('destinasi-wisata.edit', $destinasi->slug) }}" class="text-yellow-500 hover:text-yellow-700">
+                            {{ $destinasi->price }}
+                        </td>
+                        <td class="px-6 py-4">
+                            <a href="{{ route('destinasi-wisata.edit', $destinasi->slug) }}" class="text-yellow-500 hover:text-yellow-700 mr-1">
                                 <span class="bg-yellow-100 text-yellow-700 px-2 py-1 rounded-full text-xs font-semibold">
                                     <i class="fa-regular fa-pen-to-square"></i>
                                 </span>
@@ -81,28 +85,3 @@
         </div>
     </div>
 </div>
-
-<script>
-    // Mendapatkan elemen modal dan tombol
-    const openModalBtn = document.getElementById('openModalBtn');
-    const closeModalBtn = document.getElementById('closeModalBtn');
-    const editModal = document.getElementById('editModal');
-
-    // Fungsi untuk membuka modal
-    openModalBtn.addEventListener('click', function(event) {
-        event.preventDefault();
-        editModal.classList.remove('hidden');
-    });
-
-    // Fungsi untuk menutup modal
-    closeModalBtn.addEventListener('click', function() {
-        editModal.classList.add('hidden');
-    });
-
-    // Menutup modal saat klik di luar modal
-    window.addEventListener('click', function(event) {
-        if (event.target === editModal) {
-            editModal.classList.add('hidden');
-        }
-    });
-</script>

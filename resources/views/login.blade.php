@@ -13,12 +13,13 @@
 </head>
 
 <!------------------ Navbar ------------------------>
+
 <body>
-    
+
 
     <x-Navbar> </x-Navbar>
 
-<!------------------ DB --------------------->
+    <!------------------ DB --------------------->
 
     @if(session()->has('success'))
     <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -56,9 +57,11 @@
 
                 <button type="submit">Continue</button>
                 <p>atau login dengan</p>
-                <button type="button" class="google-login">
-                    <img src="img/googleicon.png" alt="Google Logo" width="20" height="20"> Login dengan Google
-                </button>
+                <a href="{{ route('google-auth') }}">
+                    <button type="button" class="google-login">
+                        <img src="img/googleicon.png" alt="Google Logo" width="20" height="20"> Login dengan Google
+                    </button>
+                </a>
             </form>
             <footer>
                 <p>Belum punya akun? <a href="/createacc">Daftar akun</a></p>

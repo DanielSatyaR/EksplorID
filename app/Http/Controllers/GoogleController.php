@@ -26,16 +26,14 @@ class GoogleController extends Controller
                     'name' => $google_user->getName(),
                     'email' => $google_user->getEmail(),
                     'google_id' => $google_user->getId(),
-                    'password' => bcrypt(''),
                 ]);
 
                 Auth::login($new_user);
                 return redirect()->intended('homepage');
+            } else {
+                Auth::login($user);
+                return redirect()->intended('homepage');
             }
-
-            Auth::login($user);
-
-            return redirect()->intended('homepage');
         } catch (\Throwable $th) {
             dd('Something went wrong! ' . $th->getMessage());
         }

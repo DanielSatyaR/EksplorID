@@ -96,6 +96,9 @@
     </div>
   </div>
 
+  <!-- Payment -->
+  <script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="{{ config('midtrans.client_key') }}"></script>
+
   <script>
     document.getElementById('pay-button').addEventListener('click', function() {
       const selectedPayment = document.querySelector('input[name="payment"]:checked');
@@ -108,6 +111,53 @@
       } else {
         alert('Silakan pilih metode pembayaran.');
       }
+    });
+
+    // Payment
+    document.getElementById('pay-button').addEventListener('click', function() {
+      const selectedPayment = document.querySelector('input[name="payment"]:checked');
+      if (!selectedPayment) {
+        alert('Silakan pilih metode pembayaran.');
+        return;
+      }
+
+      // Kirim data ke server
+      fetch("{{ route('payment.create') }}", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "X-CSRF-TOKEN": "{{ csrf_token() }}"
+          },
+          body: JSON.stringify({
+            payment: selectedPayment.value,
+            price: 27000 // Harga total
+          })
+        })
+        .then(response => response.json())
+        .then(data => {
+          if (data.snap_token) {
+            // Buka Midtrans Snap
+            window.snap.pay(data.snap_token, {
+              onSuccess: function(result) {
+                alert("Pembayaran berhasil!");
+                console.log(result);
+              },
+              onPending: function(result) {
+                alert("Menunggu pembayaran!");
+                console.log(result);
+              },
+              onError: function(result) {
+                alert("Pembayaran gagal!");
+                console.log(result);
+              },
+            });
+          } else {
+            alert("Terjadi kesalahan saat membuat transaksi.");
+          }
+        })
+        .catch(error => {
+          console.error("Error:", error);
+        });
     });
   </script>
 

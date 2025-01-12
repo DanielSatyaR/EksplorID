@@ -10,8 +10,17 @@ class Category extends Model
 {
     use HasFactory;
 
-    public function posts(): HasMany
+    protected $fillable = ['name', 'slug'];
+
+    public function destinasi(): HasMany
     {
         return $this->hasMany(Destinasi::class);
+    }
+
+    public function sluggable(): array
+    {
+        return [
+            'slug' => ['source' => 'name']
+        ];
     }
 }
