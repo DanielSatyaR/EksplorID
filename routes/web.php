@@ -1,10 +1,19 @@
 <?php
 
+use App\Http\Controllers\BaliController;
+use App\Http\Controllers\BandungController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\DestinasiController;
 use App\Http\Controllers\GoogleController;
+use App\Http\Controllers\JakartaController;
+use App\Http\Controllers\KategoriController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\MalangController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\SemarangController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\YogyaController;
 use Illuminate\Support\Facades\Route;
 
 // Homepage Route
@@ -32,106 +41,50 @@ Route::middleware('auth')->group(function () {
     Route::get('/dashboard/destinasi-wisata', [DestinasiController::class, 'index'])->name('destinasi.index');
 
     Route::get('/dashboard/users', [UserController::class, 'index'])->name('users.index');
-    Route::delete('/dashboard/users/{user}', [UserController::class, 'destroy'])->name('users.destroy');
+    Route::delete('/dashboard/users/{users}', [UserController::class, 'destroy'])->name('users.destroy');
     Route::get('/dashboard/destinasi-wisata/create/checkSlug', [DestinasiController::class, 'checkSlug'])->name('destinasi.checkSlug');
     Route::resource('/dashboard/destinasi-wisata', DestinasiController::class)->parameters([
         'destinasi-wisata' => 'destinasi:slug'
     ]);
+    Route::resource('/dashboard/kategori', KategoriController::class)->middleware('auth');
+    Route::get('/dashboard/kategori/create/checkSlug', [KategoriController::class, 'checkSlug'])->name('kategori.checkSlug');
 });
 
 // Halaman Destinasi
-Route::view('/destinasi', 'destinasi', ['title' => 'Destinasi'])->name('destinasi');
-
-// Halaman Kota
-$kotaRoutes = ['bandung', 'jakarta', 'bali', 'yogya', 'malang', 'semarang'];
-foreach ($kotaRoutes as $kota) {
-    Route::view("/$kota", $kota, ['title' => ucfirst($kota)]);
-}
+Route::view('destinasi', 'destinasi.destinasi', ['title' => 'Destinasi'])->name('destinasi');
 
 // Halaman Lainnya
-Route::view('/keranjang', 'keranjang', ['title' => 'Keranjang']);
+Route::get('/keranjang', [CartController::class, 'index'])->name('cart.index');
+Route::post('/cart', [CartController::class, 'addToCart'])->name('cart.add');
+Route::delete('/keranjang/{cart}', [CartController::class, 'remove'])->name('cart.remove');
+
 Route::view('/pesanan', 'pesanan', ['title' => 'Pesanan']);
-Route::view('/pembayaran', 'pembayaran', ['title' => 'Pembayaran']);
+Route::view('/pembayaran', 'pembayaran', ['title' => 'Pembayaran'])->name('payment.create');
+// Route::get('/payment', [PaymentController::class, 'showPaymentPage'])->middleware('auth');
 
 
 // ------------------------ WISATA ---------------------
 
-// WISATA BANDUNG
-
-
-Route::get('/bandung/dagodream', function () {
-    return view('/bandung/dagodream');
-});
-
-Route::get('/bandung/dranch', function () {
-    return view('/bandung/dranch');
-});
-
-Route::get('/bandung/kawahputih', function () {
-    return view('/bandung/kawahputih');
-});
-
 // WISATA BALI
+Route::get('/bali', [BaliController::class, 'index'])->name('bali');
+Route::get('/bali/{slug}', [BaliController::class, 'show'])->name('bali.show');
 
-Route::get('/bali/balisafari', function () {
-    return view('/bali/balisafari');
-});
-
-
-Route::get('/bali/balibird', function () {
-    return view('/bali/balibird');
-});
-
-Route::get('/bali/kecakuluwatu', function () {
-    return view('/bali/kecakuluwatu');
-});
-
+// WISATA BANDUNG
+Route::get('/bandung', [BandungController::class, 'index'])->name('bandung');
+Route::get('/bandung/{slug}', [BandungController::class, 'show'])->name('bandung.show');
 
 // WISATA JAKARTA
-
-Route::get('/jakarta/TamanMini', function () {
-    return view('/jakarta/TamanMini');
-});
-
-Route::get('/jakarta/dufan', function () {
-    return view('/jakarta/dufan');
-});
-
-Route::get('/jakarta/aquarium', function () {
-    return view('/jakarta/aquarium');
-});
-
-// WISATA YOGYAKARTA
-
-Route::get('/yogyakarta/borobudur', function () {
-    return view('/yogyakarta/borobudur');
-});
-
-Route::get('/yogyakarta/prambanan', function () {
-    return view('/yogyakarta/prambanan');
-});
-
-Route::get('/yogyakarta/tamansari', function () {
-    return view('/yogyakarta/tamansari');
-});
-
+Route::get('/jakarta', [JakartaController::class, 'index'])->name('jakarta');
+Route::get('/jakarta/{slug}', [JakartaController::class, 'show'])->name('jakarta.show');
 
 // WISATA MALANG
+Route::get('/malang', [MalangController::class, 'index'])->name('malang');
+Route::get('/malang/{slug}', [MalangController::class, 'show'])->name('malang.show');
 
-Route::get('/malang/jatim1', function () {
-    return view('/malang/jatim1');
-});
-
-Route::get('/malang/jatim2', function () {
-    return view('/malang/jatim2');
-});
-
-Route::get('/malang/jatim3', function () {
-    return view('/malang/jatim3');
-});
+// WISATA YOGYAKARTA
+Route::get('/yogya', [YogyaController::class, 'index'])->name('yogya');
+Route::get('/yogya/{slug}', [YogyaController::class, 'show'])->name('yogya.show');
 
 // WISATA SEMARANG
-
-Route::get('/semarang/saloka', function () {
-    return view('/semarang/saloka');
-});
+Route::get('/semarang', [SemarangController::class, 'index'])->name('semarang');
+Route::get('/semarang/{slug}', [SemarangController::class, 'show'])->name('semarang.show');

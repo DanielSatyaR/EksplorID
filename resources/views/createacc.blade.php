@@ -16,11 +16,11 @@
 
 <body>
 
-<x-Navbar> </x-Navbar>
+    <x-Navbar> </x-Navbar>
 
-<!-- DB -->
+    <!-- DB -->
 
-<!-- KONNTEN -->
+    <!-- KONNTEN -->
 
     <div class="container">
         <div class="image-container">
@@ -51,9 +51,11 @@
 
                 <button type="submit">Daftar</button>
                 <p>atau Daftar dengan</p>
-                <button type="button" class="google-login">
-                    <img src="img/googleicon.png" alt="Google Logo" width="20" height="20"> Daftar dengan Google
-                </button>
+                <a href="{{ route('google-auth') }}">
+                    <button type="button" class="google-login">
+                        <img src="img/googleicon.png" alt="Google Logo" width="20" height="20"> Login dengan Google
+                    </button>
+                </a>
             </form>
             <footer>
                 <p>Sudah punya akun? <a href="/login">Login</a></p>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Destinasi;
+use App\Models\DestinasiImages;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -14,9 +15,9 @@ class DestinasiController extends Controller
 {
     public function index()
     {
-        $userId = Auth::id();
+        $destinasiWisata = Destinasi::with('images')->get();
         return view('dashboard.destinasi-wisata.destinasi', [
-            'destinasiWisata' => Destinasi::all(),
+            'destinasiWisata' => $destinasiWisata,
             'categories' => Category::all()
         ]);
     }
@@ -36,22 +37,21 @@ class DestinasiController extends Controller
             'slug' => 'required|unique:destinasi',
             'category_id' => 'required|exists:categories,id',
             'images' => 'required|array',
-            'images.*' => 'image|file|max:4024',
+            'images.*' => 'image|mimes:jpg,jpeg,png,gif|max:2048',
+            'price' => 'required|numeric|min:0',
             'description' => 'required',
         ]);
 
-        $images = [];
-        foreach ($request->file('images') as $image) {
-            $imagePath = $image->store('destinasi-images', 'public');
-            $images[] = ['image' => $imagePath];
-        }
-
+        $validatedData['price'] = $request->input('price');
         $validatedData['excerpt'] = Str::limit(strip_tags($validatedData['description']), 200);
 
         $destinasi = Destinasi::create($validatedData);
 
-        foreach ($images as $image) {
-            $destinasi->images()->create($image);
+        if ($request->hasFile('images')) {
+            foreach ($request->file('images') as $image) {
+                $imagePath = $image->store('destinasi-images', 'public');
+                $destinasi->images()->create(['image' => $imagePath]);
+            }
         }
 
         return redirect('/dashboard/destinasi-wisata')->with('success', 'New Destinasi Has Been Added!');
@@ -66,7 +66,6 @@ class DestinasiController extends Controller
 
     public function edit(Destinasi $destinasi)
     {
-        $categories = Category::all();
 
         return view('dashboard.destinasi-wisata.edit', [
             'destinasi' => $destinasi,
@@ -81,21 +80,33 @@ class DestinasiController extends Controller
             'slug' => 'required|unique:destinasi,slug,' . $destinasi->id,
             'category_id' => 'required',
             'description' => 'required',
-            'image' => 'image|file|max:4024',
+            'price' => 'required|numeric|min:0',
+            'images' => 'nullable|array',
+            'images.*' => 'image|mimes:jpg,jpeg,png,gif|max:2048',
         ]);
 
-        if ($request->file('image')) {
-            // Hapus gambar lama jika ada
-            if ($destinasi->image) {
-                Storage::delete('public/' . $destinasi->image);
-            }
-
-            // Simpan gambar baru ke folder `destinasi-images`
-            $validatedData['image'] = $request->file('image')->store('destinasi-images', 'public');
-        }
-
         // Update data ke dalam database
+        $validatedData['price'] = $request->input('price');
+        $validatedData['excerpt'] = Str::limit(strip_tags($validatedData['description']), 200);
         $destinasi->update($validatedData);
+
+        // Menyimpan gambar baru jika ada
+        if ($request->hasFile('images')) {
+            foreach ($request->file('images') as $image) {
+                if (!$image->isValid()) {
+                    // Catat error jika ada masalah dengan gambar
+                    error_log('Gagal mengunggah gambar: ' . $image->getErrorMessage());
+                    continue; // Lewati gambar yang gagal
+                }
+
+                // Simpan gambar jika valid
+                $imagePath = $image->store('destinasi-images', 'public');
+                $destinasi->images()->create(['image' => $imagePath]);
+
+                // Catat gambar yang berhasil disimpan
+                error_log('Gambar berhasil disimpan: ' . $image->getClientOriginalName());
+            }
+        }
 
         // Redirect kembali ke halaman dashboard dengan pesan sukses
         return redirect('/dashboard/destinasi-wisata')->with('success', 'Destinasi berhasil diperbarui!');
@@ -104,8 +115,9 @@ class DestinasiController extends Controller
     public function destroy(Destinasi $destinasi)
     {
         // Hapus gambar jika ada
-        if ($destinasi->image) {
-            Storage::disk('public')->delete($destinasi->image);
+        foreach ($destinasi->images as $image) {
+            Storage::delete('public/' . $image->image);
+            $image->delete();
         }
 
         $destinasi->delete();

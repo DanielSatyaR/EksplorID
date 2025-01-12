@@ -45,11 +45,14 @@
                                 {{ $user->noHp }}
                             </td>
                             <td class="px-6 py-4">
-                                <!-- Tautan hapus -->
-                                <form action="{{ route('users.destroy', $user->id) }}" method="POST" class="inline-block">
+                                <form action="{{ route('users.destroy', $user->id) }}" method="POST" class="inline">
+                                    @method('delete')
                                     @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="font-medium text-red-600 dark:text-red-500 hover:underline">Hapus</button>
+                                    <button type="submit" onclick="return confirm('Are you sure?')" class="text-red-500 hover:text-red-700">
+                                        <span class="bg-red-100 text-red-700 px-2 py-1 rounded-full text-xs font-semibold">
+                                            <i class="fa-regular fa-circle-xmark"></i>
+                                        </span>
+                                    </button>
                                 </form>
                             </td>
                         </tr>

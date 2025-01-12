@@ -1,17 +1,15 @@
 <div class="flex h-screen">
     <!-- Sidebar -->
-    <div class="w-64 bg-gray-800 text-white">
+    <div class="w-64 bg-gray-800 text-white fixed h-screen overflow-y-auto">
         <x-sidebar></x-sidebar>
     </div>
 
     <!-- Main Content -->
-    <div class="flex-1 p-4">
-
+    <div class="ml-64 flex-1 p-4 overflow-y-auto">
         <x-header></x-header>
 
         <h3 class="text-xl font-semibold mb-4">Edit Destinasi Wisata</h3>
         <form action="{{ route('destinasi-wisata.update', $destinasi->slug) }}" method="POST" enctype="multipart/form-data">
-
             @csrf
             @method('PUT')
 
@@ -20,7 +18,7 @@
                 <label for="title" class="block text-sm font-medium text-gray-700">Title</label>
                 <input type="text" name="title" id="title" required autofocus value="{{ old('title', $destinasi->title) }}"
                     class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500
-            @error('title') border-red-500 @enderror">
+                @error('title') border-red-500 @enderror">
                 @error('title')
                 <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                 @enderror
@@ -31,7 +29,7 @@
                 <label for="slug" class="block text-sm font-medium text-gray-700">Slug</label>
                 <input type="text" name="slug" id="slug" autocomplete="off" value="{{ old('slug', $destinasi->slug) }}"
                     class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500
-            @error('slug') border-red-500 @enderror">
+                @error('slug') border-red-500 @enderror">
                 @error('slug')
                 <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
                 @enderror
@@ -53,21 +51,39 @@
 
             <!-- Image -->
             <div class="mb-2">
-                <label for="image" class="block text-sm font-medium text-gray-700">Current Images</label>
-                <div class="flex flex-wrap">
+                <label for="current-images" class="block text-sm font-medium text-gray-700">Images</label>
+                <div class="flex flex-wrap gap-4">
                     @foreach($destinasi->images as $image)
-                    <div class="relative w-32 h-32 m-2">
-                        <img src="{{ asset('storage/' . $image->image) }}" alt="Image" class="w-full h-full object-cover">
-                        <button type="button" class="absolute top-0 right-0 bg-red-600 text-white p-1 rounded">X</button>
+                    <div class="relative w-32 h-32">
+                        <img src="{{ asset('storage/' . $image->image) }}" alt="Destinasi Image" class="w-full h-full object-cover rounded shadow-md">
                     </div>
                     @endforeach
                 </div>
             </div>
 
-            <!-- Form upload gambar baru -->
+            <!-- Upload New Images -->
             <div class="mb-2">
-                <label for="image" class="block text-sm font-medium text-gray-700">Upload New Images</label>
-                <input type="file" name="image[]" id="image" multiple>
+                <label for="images" class="block text-sm font-medium text-gray-700">Tambah Gambar Baru</label>
+                <input type="file" name="images[]" id="images" multiple onchange="previewNewImages(event)" class="block mt-1">
+                @error('images.*')
+                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                @enderror
+            </div>
+
+            <!-- Preview New Images -->
+            <div id="new-image-preview" class="mb-2 flex flex-wrap gap-2 overflow-x-auto">
+                <!-- Selected images will be displayed here -->
+            </div>
+
+            <!-- Harga -->
+            <div class="mb-2">
+                <label for="price" class="block text-sm font-medium text-gray-700">Harga Tiket</label>
+                <input type="text" name="price" id="price" required value="{{ old('price', $destinasi->price) }}"
+                    class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500
+    @error('price') border-red-500 @enderror">
+                @error('price')
+                <p class="text-red-500 text-sm mt-1">{{ $message }}</p>
+                @enderror
             </div>
 
             <!-- Description -->
@@ -89,21 +105,60 @@
             </div>
         </form>
     </div>
+</div>
 
-    <script>
-        // Mengambil Input Judul dan Slug
-        const title = document.querySelector('#title');
-        const slug = document.querySelector('#slug');
+<script>
+    // Mengambil Input Judul dan Slug
+    const title = document.querySelector('#title');
+    const slug = document.querySelector('#slug');
 
-        // Event Handler
-        title.addEventListener('change', function() {
-            fetch('/dashboard/posts/checkSlug?title=' + title.value)
-                .then(response => response.json())
-                .then(data => slug.value = data.slug)
-        });
+    // Event Handler
+    title.addEventListener('change', function() {
+        fetch('/dashboard/posts/checkSlug?title=' + title.value)
+            .then(response => response.json())
+            .then(data => slug.value = data.slug);
+    });
 
-        // Mematikan fitur file upload
-        document.addEventListener('trix-file-accept', function(e) {
-            e.preventDefault();
-        });
-    </script>
+    // Mematikan fitur file upload
+    document.addEventListener('trix-file-accept', function(e) {
+        e.preventDefault();
+    });
+
+    function previewNewImages(event) {
+        const files = event.target.files; // Ambil file yang dipilih
+        const previewContainer = document.getElementById('new-image-preview');
+
+        // Loop melalui file yang dipilih
+        for (let i = 0; i < files.length; i++) {
+            const file = files[i];
+            const reader = new FileReader();
+
+            reader.onload = function(e) {
+                // Membuat elemen gambar
+                const img = document.createElement('img');
+                img.src = e.target.result;
+                img.classList.add('w-32', 'h-32', 'm-2', 'object-cover', 'rounded', 'shadow-md');
+
+                // Membuat kontainer untuk gambar dan tombol hapus
+                const div = document.createElement('div');
+                div.classList.add('relative', 'w-32', 'h-32', 'm-2');
+                div.appendChild(img);
+
+                // Membuat tombol hapus
+                const btnDelete = document.createElement('button');
+                btnDelete.textContent = 'X';
+                btnDelete.classList.add('absolute', 'top-0', 'right-0', 'bg-red-600', 'text-white', 'p-1', 'rounded-full');
+
+                // Event untuk menghapus pratinjau gambar
+                btnDelete.addEventListener('click', function() {
+                    previewContainer.removeChild(div);
+                });
+
+                div.appendChild(btnDelete);
+                previewContainer.appendChild(div);
+            };
+
+            reader.readAsDataURL(file); // Membaca file sebagai URL data
+        }
+    }
+</script>

@@ -15,7 +15,7 @@ class Destinasi extends Model
 
     protected $table = 'destinasi';
 
-    protected $fillable = ['title', 'slug', 'category_id', 'description', 'image', 'excerpt'];
+    protected $fillable = ['title', 'slug', 'category_id', 'description', 'image', 'price', 'excerpt'];
 
     protected $with = ['category'];
 
@@ -31,6 +31,11 @@ class Destinasi extends Model
     {
         return $this->hasMany(DestinasiImages::class);
     }
+
+    // public function mainImage()
+    // {
+    //     return $this->hasOne(DestinasiImages::class, 'destinasi_id');
+    // }
 
     /**
      * Scope untuk filter query berdasarkan parameter pencarian.
@@ -63,5 +68,10 @@ class Destinasi extends Model
     public function getExcerptAttribute()
     {
         return \Illuminate\Support\Str::limit(strip_tags($this->description), 200);
+    }
+
+    public function carts()
+    {
+        return $this->hasMany(Cart::class);
     }
 }

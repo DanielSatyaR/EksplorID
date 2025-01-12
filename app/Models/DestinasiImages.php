@@ -9,6 +9,8 @@ class DestinasiImages extends Model
 {
     use HasFactory;
 
+    protected $table = 'destinasi_images';
+
     protected $fillable = ['destinasi_id', 'image'];
 
     // Relasi ke destinasi
